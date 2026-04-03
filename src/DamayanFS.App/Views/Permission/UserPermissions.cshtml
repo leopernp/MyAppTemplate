@@ -1,0 +1,97 @@
+@model DamayanFS.App.ViewModels.Permission.PermissionUserViewModel
+
+<style>
+    .perm-matrix th, .perm-matrix td { vertical-align: middle; }
+    .perm-matrix .col-perm { width: 52px; text-align: center; padding-left: 4px; padding-right: 4px; }
+    .perm-matrix .col-actions { width: 90px; text-align: center; }
+    .perm-matrix .col-section { background-color: var(--bs-secondary-bg); font-size: 0.7rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; }
+    .perm-row-active { background-color: rgba(var(--bs-info-rgb), 0.06) !important; }
+    .perm-type-header td { background-color: var(--bs-secondary-bg); font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+    .perm-check { cursor: pointer; width: 1.1rem; height: 1.1rem; }
+    .perm-badge-yes { color: var(--bs-success); font-size: 1rem; }
+    .perm-badge-no  { color: var(--bs-secondary); font-size: 1rem; }
+    .th-section { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em; }
+</style>
+
+@await Component.InvokeAsync("PageHeader", Model.PageHeader)
+
+<div id="pageMeta"
+     data-user-id="@Model.UserId"
+     data-role-id="@Model.RoleId"
+     data-role-name="@Model.RoleName"
+     data-is-super-admin="@Model.IsSuperAdmin.ToString().ToLower()">
+</div>
+
+@if (Model.IsSuperAdmin)
+{
+    <div class="alert alert-warning d-flex align-items-center gap-2 mb-3" role="alert">
+        <i class="bi bi-exclamation-triangle-fill fs-5"></i>
+        <div>
+            <strong>Super Admin user.</strong> This user bypasses all module permissions and has full access everywhere.
+            Override permissions saved here will be stored but will have no practical effect.
+        </div>
+    </div>
+}
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <div class="d-flex gap-2 align-items-center">
+        <button type="button" class="btn btn-sm btn-outline-secondary" id="btnRefresh">
+            <i class="bi bi-arrow-clockwise"></i> Refresh
+        </button>
+        <div style="min-width:240px;">
+            <select id="userSelector" class="form-select form-select-sm"
+                    data-placeholder="Switch user..."></select>
+        </div>
+    </div>
+    <div class="d-flex gap-2 align-items-center flex-wrap">
+        <span class="text-muted small">Role: <strong id="roleName">@Model.RoleName</strong></span>
+        <span class="badge bg-info-subtle text-info border border-info-subtle">
+            <i class="bi bi-person-check me-1"></i>Has Override
+        </span>
+        <span class="badge bg-secondary-subtle text-secondary border border-secondary-subtle">
+            <i class="bi bi-diagram-3 me-1"></i>Group Node
+        </span>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover perm-matrix" id="tablePermissions">
+        <thead class="table-light">
+            <tr>
+                <th rowspan="2" style="vertical-align:middle;">Module</th>
+                <th colspan="4" class="text-center col-section border-start">Role Grant</th>
+                <th colspan="4" class="text-center col-section border-start">User Override</th>
+                <th colspan="4" class="text-center col-section border-start">Effective</th>
+                <th rowspan="2" class="col-actions" style="vertical-align:middle;">Actions</th>
+            </tr>
+            <tr>
+                <th class="col-perm border-start" title="View"><i class="bi bi-eye"></i></th>
+                <th class="col-perm" title="Create"><i class="bi bi-plus-circle"></i></th>
+                <th class="col-perm" title="Update"><i class="bi bi-pencil"></i></th>
+                <th class="col-perm" title="Delete"><i class="bi bi-trash"></i></th>
+
+                <th class="col-perm border-start" title="View"><i class="bi bi-eye"></i></th>
+                <th class="col-perm" title="Create"><i class="bi bi-plus-circle"></i></th>
+                <th class="col-perm" title="Update"><i class="bi bi-pencil"></i></th>
+                <th class="col-perm" title="Delete"><i class="bi bi-trash"></i></th>
+
+                <th class="col-perm border-start" title="View"><i class="bi bi-eye"></i></th>
+                <th class="col-perm" title="Create"><i class="bi bi-plus-circle"></i></th>
+                <th class="col-perm" title="Update"><i class="bi bi-pencil"></i></th>
+                <th class="col-perm" title="Delete"><i class="bi bi-trash"></i></th>
+            </tr>
+        </thead>
+        <tbody id="matrixBody">
+            <tr>
+                <td colspan="14" class="text-center py-4">
+                    <span class="spinner-border spinner-border-sm me-2"></span>Loading modules...
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="~/js/Utilities/tomselect-helper.js" asp-append-version="true"></script>
+    <script src="~/js/Settings/Permission/UserPermissionsScript.js" asp-append-version="true"></script>
+}

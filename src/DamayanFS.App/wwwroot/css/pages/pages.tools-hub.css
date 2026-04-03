@@ -1,0 +1,80 @@
+﻿.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
+    margin-top: 1.5rem;
+}
+
+.tool-card {
+    display: flex;
+    align-items: flex-start;
+    padding: 1.5rem;
+    /* Uses Bootstrap's theme-aware background and border */
+    background-color: var(--bs-tertiary-bg);
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem;
+    text-decoration: none !important;
+    color: var(--bs-body-color);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+    .tool-card:hover {
+        border-color: var(--bs-primary);
+        background-color: var(--bs-secondary-bg);
+        box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+        transform: translateY(-3px);
+    }
+
+/* Icon Box */
+.tool-icon {
+    background-color: var(--bs-secondary-bg);
+    color: var(--bs-primary);
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    font-size: 1.5rem;
+    margin-right: 1.25rem;
+    flex-shrink: 0;
+    border: 1px solid var(--bs-border-color-translucent);
+    transition: 0.2s;
+}
+
+.tool-card:hover .tool-icon {
+    background-color: var(--bs-primary);
+    color: #fff; /* Always white on primary hover */
+    border-color: var(--bs-primary);
+}
+
+.tool-title {
+    font-weight: 700;
+    font-size: 1.15rem;
+    /* Uses primary color for title to make it pop */
+    color: var(--bs-primary);
+    margin-bottom: 0.35rem;
+    display: flex;
+    align-items: center;
+}
+
+.tool-description {
+    font-size: 0.9rem;
+    /* Uses theme-aware secondary text color */
+    color: var(--bs-secondary-color);
+    line-height: 1.5;
+}
+
+/* Status Badge */
+.badge-status {
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 0.25em 0.6em;
+    background-color: var(--bs-success-bg-subtle);
+    color: var(--bs-success-text-emphasis);
+    border: 1px solid var(--bs-success-border-subtle);
+    border-radius: 20px;
+    margin-left: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}

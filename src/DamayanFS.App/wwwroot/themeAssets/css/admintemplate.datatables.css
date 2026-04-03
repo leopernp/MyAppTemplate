@@ -1,0 +1,513 @@
+﻿/* ═══════════════════════════════════════════════════════════
+   DamayanFS Admin — DataTables 2.x + Bootstrap 5 renderer
+   Target:  .dt-container.dt-bootstrap5
+   Depends: admintemplate.css (CSS vars must load first)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── Container root ─────────────────────────────────────── */
+
+.dt-container.dt-bootstrap5 {
+    display: flex;
+    flex-direction: column;
+    gap: .75rem;
+    font-size: .875rem;
+    color: var(--bs-body-color);
+}
+
+/* Isolate horizontal scroll to the table only — not the top/bottom rows */
+.dt-container.dt-bootstrap5 .dt-layout-row:not(:first-child):not(:last-child) {
+    overflow-x: auto;
+}
+
+.dt-container.dt-bootstrap5 .dt-layout-row:first-child,
+.dt-container.dt-bootstrap5 .dt-layout-row:last-child {
+    overflow: visible;
+}
+
+    /* ── Top row (length + search) ──────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-layout-row:first-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: .5rem;
+        padding-bottom: .75rem;
+        border-bottom: 1px solid var(--bs-border-color);
+    }
+
+    /* ── Bottom row (info + pagination) ─────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-layout-row:last-child {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: .5rem;
+        padding-top: .75rem;
+        border-top: 1px solid var(--bs-border-color);
+    }
+
+    /* ── Layout cells ───────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-layout-cell {
+        display: flex;
+        align-items: center;
+    }
+
+        .dt-container.dt-bootstrap5 .dt-layout-cell.dt-end {
+            margin-left: auto;
+        }
+
+    /* ── Length picker ──────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-length label {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .8rem;
+        color: var(--bs-secondary-color);
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .dt-container.dt-bootstrap5 .dt-length select {
+        appearance: auto;
+        background-color: var(--bs-form-control-bg) !important;
+        border: 1px solid var(--bs-border-color) !important;
+        color: var(--bs-body-color) !important;
+        border-radius: .375rem !important;
+        padding: .25rem .5rem !important;
+        font-size: .8rem !important;
+        line-height: 1.5;
+        cursor: pointer;
+        transition: border-color .15s, box-shadow .15s;
+    }
+
+        .dt-container.dt-bootstrap5 .dt-length select:focus {
+            border-color: var(--indigo-500) !important;
+            outline: none;
+            box-shadow: 0 0 0 .2rem rgba(99, 102, 241, .2) !important;
+        }
+
+    /* ── Search ─────────────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-search label {
+        display: flex;
+        align-items: center;
+        gap: .5rem;
+        font-size: .8rem;
+        color: var(--bs-secondary-color);
+        margin: 0;
+        white-space: nowrap;
+    }
+
+    .dt-container.dt-bootstrap5 .dt-search input {
+        background-color: var(--bs-form-control-bg) !important;
+        border: 1px solid var(--bs-border-color) !important;
+        color: var(--bs-body-color) !important;
+        border-radius: .375rem !important;
+        padding: .3rem .65rem !important;
+        font-size: .8rem !important;
+        width: 220px;
+        transition: border-color .15s, box-shadow .15s, width .2s ease;
+    }
+
+        .dt-container.dt-bootstrap5 .dt-search input::placeholder {
+            color: var(--bs-tertiary-color);
+        }
+
+        .dt-container.dt-bootstrap5 .dt-search input:focus {
+            border-color: var(--indigo-500) !important;
+            outline: none;
+            box-shadow: 0 0 0 .2rem rgba(99, 102, 241, .2) !important;
+            width: 260px;
+        }
+
+    /* ── Info text ──────────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-info {
+        font-size: .8rem;
+        color: var(--bs-secondary-color);
+        margin: 0;
+        padding: 0;
+    }
+
+    /* ── Pagination ─────────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-paging {
+        display: flex;
+        align-items: center;
+    }
+
+        .dt-container.dt-bootstrap5 .dt-paging nav {
+            display: flex;
+            align-items: center;
+            gap: 1px;
+        }
+
+        /* Base button — borderless, flat */
+        .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button {
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            min-width: 26px;
+            height: 26px;
+            padding: 0 .35rem !important;
+            margin: 0 !important;
+            border-radius: .3rem !important;
+            border: none !important;
+            background: transparent !important;
+            color: var(--bs-secondary-color) !important;
+            font-size: .78rem !important;
+            font-weight: 400;
+            line-height: 1;
+            cursor: pointer;
+            text-decoration: none !important;
+            user-select: none;
+            transition: background .15s, color .15s;
+        }
+
+            .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button:hover:not(.current):not(.disabled) {
+                background: var(--surface-hover) !important;
+                color: var(--bs-body-color) !important;
+            }
+
+            /* Active page — solid indigo pill */
+            .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button.current,
+            .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button.current:hover {
+                background: var(--indigo-600) !important;
+                color: #fff !important;
+                font-weight: 600;
+            }
+
+            /* Disabled (first/last at boundaries) */
+            .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button.disabled,
+            .dt-container.dt-bootstrap5 .dt-paging .dt-paging-button.disabled:hover {
+                background: transparent !important;
+                color: var(--bs-tertiary-color) !important;
+                cursor: default !important;
+                opacity: .35;
+                pointer-events: none;
+            }
+
+    /* ════════════════════════════════════════════════════════════
+   SORT ICONS — complete override of DataTables 2.x defaults
+   Strategy:
+     1. Hide the <span class="dt-column-order"> DT2 injects.
+     2. Reset ALL ::before and ::after on <th> that DT2 sets.
+     3. Re-add only our own ::after using Bootstrap Icons.
+   ════════════════════════════════════════════════════════════ */
+
+    /* 1. Hide DT2's injected sort widget span entirely */
+    .dt-container.dt-bootstrap5 table.dataTable thead th .dt-column-order {
+        display: none !important;
+        visibility: hidden !important;
+    }
+
+    /* 2a. Reset ::before on ALL th variants DT2 targets */
+    .dt-container.dt-bootstrap5 table.dataTable thead th::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-asc::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-desc::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-asc::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-desc::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting_asc::before,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting_desc::before {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* 2b. Reset ::after on ALL th variants DT2 targets */
+    .dt-container.dt-bootstrap5 table.dataTable thead th::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-asc::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-desc::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-asc::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-desc::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting_asc::after,
+    .dt-container.dt-bootstrap5 table.dataTable thead th.sorting_desc::after {
+        display: none !important;
+        content: none !important;
+    }
+
+    /* 3. Table head base styles */
+    .dt-container.dt-bootstrap5 table.dataTable thead th,
+    .dt-container.dt-bootstrap5 table.dataTable thead td {
+        position: relative;
+        background-color: var(--bs-card-cap-bg) !important;
+        color: var(--bs-tertiary-color) !important;
+        border-bottom: 1px solid var(--bs-table-border-color) !important;
+        font-size: .7rem !important;
+        font-weight: 600 !important;
+        text-transform: uppercase !important;
+        letter-spacing: .6px !important;
+        white-space: nowrap;
+        cursor: default;
+        /* Room for our icon on the right */
+        padding-right: 1.75rem !important;
+    }
+
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-asc,
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-desc {
+            cursor: pointer;
+        }
+
+            /* 3a. Unsorted sortable column — faint double-arrow */
+            .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-asc:not(.dt-ordering-asc):not(.dt-ordering-desc)::after,
+            .dt-container.dt-bootstrap5 table.dataTable thead th.dt-orderable-desc:not(.dt-ordering-asc):not(.dt-ordering-desc)::after {
+                display: block !important;
+                content: "\F127" !important; /* bi-arrow-down-up */
+                font-family: "bootstrap-icons" !important;
+                font-style: normal;
+                font-weight: normal;
+                font-variant: normal;
+                -webkit-font-smoothing: antialiased;
+                position: absolute;
+                right: .5rem;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: .7rem;
+                line-height: 1;
+                color: var(--bs-tertiary-color);
+                opacity: .4;
+                pointer-events: none;
+            }
+
+        /* 3b/3c. Sorted (shared base) */
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-asc::after,
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-desc::after {
+            display: block !important;
+            font-family: "bootstrap-icons" !important;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            -webkit-font-smoothing: antialiased;
+            position: absolute;
+            right: .5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: .85rem;
+            line-height: 1;
+            color: var(--indigo-500);
+            opacity: 1;
+            pointer-events: none;
+        }
+
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-asc::after {
+            content: "\F145" !important; /* bi-arrow-up */
+        }
+
+        .dt-container.dt-bootstrap5 table.dataTable thead th.dt-ordering-desc::after {
+            content: "\F128" !important; /* bi-arrow-down */
+        }
+
+    /* ── Table body ─────────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 table.dataTable tbody tr {
+        transition: background .1s;
+    }
+
+    .dt-container.dt-bootstrap5 table.dataTable tbody td {
+        color: var(--bs-body-color) !important;
+        border-color: var(--bs-table-border-color) !important;
+        font-size: .875rem;
+        vertical-align: middle;
+    }
+
+    .dt-container.dt-bootstrap5 table.dataTable tbody tr:hover > * {
+        background-color: var(--bs-table-hover-bg) !important;
+        color: var(--bs-body-color) !important;
+    }
+
+    .dt-container.dt-bootstrap5 table.dataTable tbody tr.odd > * {
+        background-color: var(--bs-table-striped-bg);
+    }
+
+    /* ── Empty state ────────────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 table.dataTable tbody td.dt-empty {
+        text-align: center;
+        color: var(--bs-tertiary-color) !important;
+        font-size: .85rem;
+        padding: 2.5rem 1rem !important;
+        background: transparent !important;
+    }
+
+    /* ── Processing overlay ─────────────────────────────────── */
+
+    .dt-container.dt-bootstrap5 .dt-processing {
+        background: var(--surface);
+        border: 1px solid var(--bs-border-color);
+        border-radius: .5rem;
+        color: var(--bs-secondary-color);
+        font-size: .8rem;
+        padding: .5rem 1.25rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .1);
+    }
+
+[data-bs-theme="dark"] .dt-container.dt-bootstrap5 .dt-processing {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, .4);
+}
+
+/* ── Buttons extension ──────────────────────────────────── */
+
+.dt-container.dt-bootstrap5 .dt-buttons {
+    display: flex;
+    gap: .375rem;
+}
+
+    .dt-container.dt-bootstrap5 .dt-buttons .dt-button {
+        background: var(--surface) !important;
+        border: 1px solid var(--bs-border-color) !important;
+        color: var(--bs-secondary-color) !important;
+        font-size: .8rem !important;
+        border-radius: .375rem !important;
+        padding: .3rem .75rem !important;
+        font-weight: 500;
+        cursor: pointer;
+        transition: background .15s, color .15s;
+    }
+
+        .dt-container.dt-bootstrap5 .dt-buttons .dt-button:hover {
+            background: var(--surface-hover) !important;
+            color: var(--bs-body-color) !important;
+            border-color: var(--bs-border-color) !important;
+        }
+
+/* ── Responsive child rows ──────────────────────────────── */
+
+.dt-container.dt-bootstrap5 table.dataTable td.child {
+    background: var(--surface-subtle) !important;
+}
+
+    .dt-container.dt-bootstrap5 table.dataTable td.child ul.dtr-details > li {
+        border-color: var(--bs-border-color);
+        font-size: .85rem;
+        padding: .35rem 0;
+    }
+
+    .dt-container.dt-bootstrap5 table.dataTable td.child ul.dtr-details .dtr-title {
+        font-size: .7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: var(--bs-tertiary-color);
+        min-width: 100px;
+    }
+
+/* ── Dark mode safety nets ──────────────────────────────── */
+
+[data-bs-theme="dark"] .dt-container.dt-bootstrap5 table.dataTable {
+    border-color: var(--bs-table-border-color) !important;
+}
+
+    [data-bs-theme="dark"] .dt-container.dt-bootstrap5 table.dataTable tbody tr:hover > * {
+        background-color: var(--bs-table-hover-bg) !important;
+        color: var(--bs-body-color) !important;
+    }
+
+    [data-bs-theme="dark"] .dt-container.dt-bootstrap5 table.dataTable thead th,
+    [data-bs-theme="dark"] .dt-container.dt-bootstrap5 table.dataTable thead td {
+        background-color: var(--bs-card-cap-bg) !important;
+        color: var(--bs-tertiary-color) !important;
+        border-bottom-color: var(--bs-table-border-color) !important;
+    }
+
+/* ── Action buttons (used inside DataTable rows) ────────── */
+
+.btn-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: .3rem;
+    border: 1px solid;
+    background: transparent;
+    font-size: .8rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .15s, border-color .15s, color .15s;
+}
+
+.btn-action + .btn-action {
+    margin-left: .25rem;
+}
+
+.btn-action-secondary {
+    color: var(--bs-secondary);
+    border-color: rgba(var(--bs-secondary-rgb), .5);
+}
+
+    .btn-action-secondary:hover {
+        background: rgba(var(--bs-secondary-rgb), .1);
+        border-color: var(--bs-secondary);
+        color: var(--bs-secondary);
+    }
+
+.btn-action-info {
+    color: var(--indigo-500);
+    border-color: var(--indigo-400);
+}
+
+    .btn-action-info:hover {
+        background: var(--indigo-100);
+        border-color: var(--indigo-500);
+        color: var(--indigo-600);
+    }
+
+.btn-action-success {
+    color: var(--bs-success);
+    border-color: rgba(var(--bs-success-rgb), .5);
+}
+
+    .btn-action-success:hover {
+        background: rgba(var(--bs-success-rgb), .1);
+        border-color: var(--bs-success);
+        color: var(--bs-success);
+    }
+
+.btn-action-warning {
+    color: var(--bs-warning);
+    border-color: rgba(var(--bs-warning-rgb), .5);
+}
+
+    .btn-action-warning:hover {
+        background: rgba(var(--bs-warning-rgb), .1);
+        border-color: var(--bs-warning);
+        color: var(--bs-warning);
+    }
+
+.btn-action-danger {
+    color: var(--bs-danger);
+    border-color: rgba(var(--bs-danger-rgb), .5);
+}
+
+    .btn-action-danger:hover {
+        background: rgba(var(--bs-danger-rgb), .1);
+        border-color: var(--bs-danger);
+        color: var(--bs-danger);
+    }
+
+[data-bs-theme="dark"] .btn-action-info {
+    border-color: rgba(99, 102, 241, .5);
+}
+
+    [data-bs-theme="dark"] .btn-action-info:hover {
+        background: rgba(99, 102, 241, .15);
+        border-color: var(--indigo-400);
+    }
+
+/* ── Toggle switch — indigo accent ─────────────────────── */
+
+.form-check.form-switch .form-check-input:checked {
+    background-color: var(--indigo-500);
+    border-color: var(--indigo-500);
+}
+
+.form-check.form-switch .form-check-input:focus {
+    box-shadow: 0 0 0 .2rem rgba(99, 102, 241, .25);
+    border-color: var(--indigo-400);
+}

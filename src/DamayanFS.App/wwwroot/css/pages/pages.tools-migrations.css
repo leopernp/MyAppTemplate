@@ -1,0 +1,26 @@
+﻿.settings-sidebar-scroll {
+    height: calc(100vh - 300px);
+    overflow-y: auto;
+}
+
+.status-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+}
+
+/* Terminal Dots styling */
+.terminal-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* Row highlight for pending migrations */
+.migration-pending {
+    background-color: var(--bs-warning-bg-subtle) !important;
+}

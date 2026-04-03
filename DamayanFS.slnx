@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/DamayanFS.App/DamayanFS.App.csproj" />
+    <Project Path="src/DamayanFS.Contract/DamayanFS.Contract.csproj" />
+    <Project Path="src/DamayanFS.Data/DamayanFS.Data.csproj" />
+  </Folder>
+</Solution>

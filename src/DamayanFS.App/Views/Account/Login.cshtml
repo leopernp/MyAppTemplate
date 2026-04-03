@@ -1,0 +1,137 @@
+﻿@model DamayanFS.App.ViewModels.Account.LoginViewModel
+@{
+    Layout = null;
+    ViewData["Title"] = "Sign In";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Finance System</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="~/frontend-lib/bootstrap-icons/font/bootstrap-icons.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+
+    <link rel="stylesheet" href="~/css/app.login.css" />
+</head>
+<body class="login-body">
+
+    <div class="login-wrapper">
+
+        <!-- Card -->
+        <div class="login-card">
+
+            <!-- Brand -->
+            <div class="login-brand">
+                <div class="login-brand-mark">
+                    <i class="bi bi-hexagon-fill"></i>
+                </div>
+                <div class="login-brand-name">Finance System</div>
+                <div class="login-brand-sub">Admin Console</div>
+            </div>
+
+            <!-- Error / Lockout Alert -->
+            @if (Model.HasError)
+            {
+                <div class="alert @(Model.IsLockedOut ? "alert-warning" : "alert-danger") d-flex align-items-start gap-2 py-2" role="alert">
+                    <i class="bi @(Model.IsLockedOut ? "bi-lock-fill" : "bi-exclamation-triangle-fill") mt-1 flex-shrink-0"></i>
+                    <div>
+                        @if (Model.IsLockedOut)
+                        {
+                            <div class="fw-semibold">Account Locked</div>
+                            <div class="small">
+                                Too many failed attempts. Please try again in
+                                <span id="lockoutCountdown" class="fw-bold">@Model.RemainingLockoutSeconds</span>
+                                second(s).
+                            </div>
+                        }
+                        else
+                        {
+                            @Model.ErrorMessage
+                        }
+                    </div>
+                </div>
+            }
+
+            <!-- Form -->
+            <form asp-controller="Account" asp-action="Login" method="post" autocomplete="off">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="ReturnUrl" />
+
+                <!-- Username -->
+                <div class="mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-person"></i>
+                        </span>
+                        <input asp-for="Username"
+                               class="form-control @(ViewContext.ModelState["Username"]?.Errors.Any() == true ? "is-invalid" : "")"
+                               placeholder="Enter your username"
+                               autofocus />
+                        <span asp-validation-for="Username" class="invalid-feedback"></span>
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div class="mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <div class="input-group">
+                        <span class="input-group-text">
+                            <i class="bi bi-lock"></i>
+                        </span>
+                        <input asp-for="Password"
+                               class="form-control @(ViewContext.ModelState["Password"]?.Errors.Any() == true ? "is-invalid" : "")"
+                               placeholder="Enter your password"
+                               id="passwordInput" />
+                        <button class="btn btn-outline-secondary"
+                                type="button"
+                                id="togglePassword"
+                                tabindex="-1"
+                                title="Show/hide password">
+                            <i class="bi bi-eye" id="togglePasswordIcon"></i>
+                        </button>
+                        <span asp-validation-for="Password" class="invalid-feedback"></span>
+                    </div>
+                </div>
+
+                <!-- Remember Me -->
+                <div class="mb-3 form-check">
+                    <input asp-for="RememberMe" class="form-check-input" />
+                    <label asp-for="RememberMe" class="form-check-label"></label>
+                </div>
+
+                <!-- Submit -->
+                <div class="d-grid">
+                    <button type="submit"
+                            class="btn btn-primary"
+                            id="loginBtn">
+                        <i class="bi bi-box-arrow-in-right me-1"></i>
+                        Sign In
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="login-footer">
+            &copy; @DateTime.Now.Year Finance System. All rights reserved.
+        </div>
+
+    </div>
+
+    <button class="login-theme-toggle" id="loginThemeToggle" title="Toggle theme">
+        <i class="bi bi-sun" id="loginThemeIcon"></i>
+    </button>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/account/login.js"></script>
+
+</body>
+</html>

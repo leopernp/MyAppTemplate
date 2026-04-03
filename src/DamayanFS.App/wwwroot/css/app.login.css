@@ -1,0 +1,342 @@
+﻿/* ══════════════════════════════════════════════════════
+   DamayanFS — Login Page Styles
+   Theme: Soft / Rounded
+   Supports: prefers-color-scheme (light + dark)
+══════════════════════════════════════════════════════ */
+
+/* ── Variables ─────────────────────────────────────── */
+:root {
+    --login-accent: #4F46E5;
+    --login-accent-hover: #4338CA;
+    --login-accent-light: #F5F3FF;
+    --login-accent-border: #C4B5FD;
+    --login-bg: #EEF2FF;
+    --login-bg-gradient-a: #e8f0fe;
+    --login-bg-gradient-b: #f3e8ff;
+    --login-card-bg: #ffffff;
+    --login-card-border: #e5e7eb;
+    --login-card-radius: 16px;
+    --login-input-bg: #f9fafb;
+    --login-input-border: #e5e7eb;
+    --login-input-focus: #4F46E5;
+    --login-input-radius: 8px;
+    --login-input-height: 42px;
+    --login-text-primary: #111827;
+    --login-text-secondary: #6b7280;
+    --login-text-hint: #9ca3af;
+    --login-brand-mark-bg: #4F46E5;
+    --login-brand-radius: 10px;
+    --login-divider: #f2f4f7;
+    --login-warning-bg: #fffbeb;
+    --login-warning-border: #f59e0b;
+    --login-warning-text: #92400e;
+    --login-warning-sub: #b45309;
+    --login-danger-bg: #fef2f2;
+    --login-danger-border: #ef4444;
+    --login-danger-text: #991b1b;
+    --login-footer-text: #9ca3af;
+    --login-shadow: 0 8px 32px rgba(79, 70, 229, 0.08), 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+[data-bs-theme="dark"] {
+    --login-bg-gradient-a: #1e1b4b;
+    --login-bg-gradient-b: #2e1065;
+    --login-card-bg: #1f2937;
+    --login-card-border: #374151;
+    --login-input-bg: #111827;
+    --login-input-border: #374151;
+    --login-input-focus: #818cf8;
+    --login-text-primary: #f9fafb;
+    --login-text-secondary: #9ca3af;
+    --login-text-hint: #6b7280;
+    --login-brand-mark-bg: #4F46E5;
+    --login-divider: #374151;
+    --login-warning-bg: #292524;
+    --login-warning-border: #d97706;
+    --login-warning-text: #fcd34d;
+    --login-warning-sub: #fbbf24;
+    --login-danger-bg: #2d1b1b;
+    --login-danger-border: #ef4444;
+    --login-danger-text: #fca5a5;
+    --login-footer-text: #6b7280;
+    --login-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ── Page Layout ───────────────────────────────────── */
+.login-body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, var(--login-bg-gradient-a) 0%, var(--login-bg-gradient-b) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 1rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.login-wrapper {
+    width: 100%;
+    max-width: 420px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+/* ── Card ──────────────────────────────────────────── */
+.login-card {
+    width: 100%;
+    background: var(--login-card-bg);
+    border: 1px solid var(--login-card-border);
+    border-radius: var(--login-card-radius);
+    padding: 2.5rem 2rem;
+    box-shadow: var(--login-shadow);
+}
+
+/* ── Brand ─────────────────────────────────────────── */
+.login-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--login-divider);
+}
+
+.login-brand-mark {
+    width: 44px;
+    height: 44px;
+    background: var(--login-brand-mark-bg);
+    border-radius: var(--login-brand-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-size: 22px;
+    flex-shrink: 0;
+}
+
+.login-brand-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--login-text-primary);
+    line-height: 1.2;
+}
+
+.login-brand-sub {
+    font-size: 12px;
+    color: var(--login-text-secondary);
+    margin-top: 2px;
+}
+
+/* ── Form Labels ───────────────────────────────────── */
+.form-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--login-text-secondary);
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* ── Input Group ───────────────────────────────────── */
+.input-group {
+    margin-bottom: 1.25rem;
+}
+
+.input-group-text {
+    background: var(--login-input-bg);
+    border: 1.5px solid var(--login-input-border);
+    border-right: none;
+    border-radius: var(--login-input-radius) 0 0 var(--login-input-radius);
+    color: var(--login-text-hint);
+    padding: 0 12px;
+    height: var(--login-input-height);
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+}
+
+.input-group .form-control {
+    height: var(--login-input-height);
+    border: 1.5px solid var(--login-input-border);
+    border-left: none;
+    border-radius: 0 var(--login-input-radius) var(--login-input-radius) 0;
+    background: var(--login-input-bg);
+    color: var(--login-text-primary);
+    font-size: 14px;
+    padding: 0 12px;
+    transition: border-color 0.15s ease, background 0.15s ease;
+    box-shadow: none;
+    outline: none;
+}
+
+    .input-group .form-control::placeholder {
+        color: var(--login-text-hint);
+    }
+
+    .input-group .form-control:focus {
+        border-color: var(--login-input-focus);
+        background: var(--login-card-bg);
+        box-shadow: none;
+        outline: none;
+    }
+
+        .input-group .form-control:focus + .btn,
+        .input-group .form-control:focus ~ .input-group-text {
+            border-color: var(--login-input-focus);
+        }
+
+.input-group .btn-outline-secondary {
+    border: 1.5px solid var(--login-input-border);
+    border-left: none;
+    border-radius: 0 var(--login-input-radius) var(--login-input-radius) 0;
+    background: var(--login-input-bg);
+    color: var(--login-text-hint);
+    padding: 0 12px;
+    height: var(--login-input-height);
+    display: flex;
+    align-items: center;
+    transition: color 0.15s ease;
+}
+
+    .input-group .btn-outline-secondary:hover {
+        color: var(--login-text-primary);
+        background: var(--login-input-bg);
+        border-color: var(--login-input-border);
+    }
+
+.input-group .form-control.is-invalid {
+    border-color: var(--login-danger-border);
+}
+
+.invalid-feedback {
+    font-size: 12px;
+    color: var(--login-danger-text);
+    margin-top: 4px;
+    display: block;
+}
+
+/* ── Remember Me ───────────────────────────────────── */
+.form-check {
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-check-input {
+    width: 16px;
+    height: 16px;
+    border: 1.5px solid var(--login-input-border);
+    border-radius: 4px;
+    accent-color: var(--login-accent);
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.form-check-label {
+    font-size: 13px;
+    color: var(--login-text-secondary);
+    cursor: pointer;
+    margin: 0;
+}
+
+/* ── Submit Button ─────────────────────────────────── */
+.login-card .btn-primary {
+    width: 100%;
+    height: var(--login-input-height);
+    background: var(--login-accent);
+    border: none;
+    border-radius: var(--login-input-radius);
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.15s ease, transform 0.1s ease;
+}
+
+    .login-card .btn-primary:hover:not(:disabled) {
+        background: var(--login-accent-hover);
+    }
+
+    .login-card .btn-primary:active:not(:disabled) {
+        transform: scale(0.99);
+    }
+
+    .login-card .btn-primary:disabled {
+        background: var(--login-accent);
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+/* ── Alerts ────────────────────────────────────────── */
+.login-card .alert {
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+    margin-bottom: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    border: none;
+}
+
+.login-card .alert-warning {
+    background: var(--login-warning-bg);
+    border-left: 3px solid var(--login-warning-border);
+    color: var(--login-warning-text);
+    border-radius: 0 8px 8px 0;
+}
+
+    .login-card .alert-warning .fw-semibold {
+        color: var(--login-warning-text);
+    }
+
+    .login-card .alert-warning .small {
+        color: var(--login-warning-sub);
+        margin-top: 2px;
+    }
+
+.login-card .alert-danger {
+    background: var(--login-danger-bg);
+    border-left: 3px solid var(--login-danger-border);
+    color: var(--login-danger-text);
+    border-radius: 0 8px 8px 0;
+}
+
+/* ── Footer ────────────────────────────────────────── */
+.login-footer {
+    font-size: 12px;
+    color: var(--login-footer-text);
+    text-align: center;
+}
+
+/* ── Theme Toggle ──────────────────────────────────── */
+.login-theme-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid var(--login-card-border);
+    background: var(--login-card-bg);
+    color: var(--login-text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.15s ease, color 0.15s ease;
+    z-index: 100;
+}
+
+    .login-theme-toggle:hover {
+        color: var(--login-text-primary);
+        background: var(--login-input-bg);
+    }

@@ -1,0 +1,1068 @@
+﻿/* ═══════════════════════════════════════════════════════════
+           DamayanFS Admin — Indigo & Slate theme
+           Strategy:
+             • Override Bootstrap's own CSS variables on [data-bs-theme]
+               so every Bootstrap component (btn, card, form, modal,
+               dropdown, table, badge…) adapts automatically.
+             • Only add custom classes for structural elements that
+               Bootstrap has no equivalent for (sidebar, topbar, avatar…).
+             • Custom class names are plain & descriptive — no prefix.
+           ═══════════════════════════════════════════════════════════ */
+/* ── Indigo palette (static, both themes) ── */
+:root {
+    --indigo-50: #eef2ff;
+    --indigo-100: #e0e7ff;
+    --indigo-200: #c7d2fe;
+    --indigo-400: #818cf8;
+    --indigo-500: #6366f1;
+    --indigo-600: #4f46e5;
+    --indigo-700: #4338ca;
+    --sidebar-width: 240px;
+    --topbar-height: 56px;
+}
+
+/* ── Light theme: override Bootstrap tokens ── */
+[data-bs-theme="light"] {
+    /* Bootstrap core overrides */
+    --bs-body-font-family: 'DM Sans', system-ui, sans-serif;
+    --bs-body-font-size: 0.9rem;
+    --bs-body-color: #1e293b;
+    --bs-body-bg: #f1f5f9;
+    --bs-secondary-color: #64748b;
+    --bs-tertiary-color: #94a3b8;
+    --bs-border-color: #e2e8f0;
+    --bs-border-color-translucent: rgba(0,0,0,.08);
+    --bs-link-color: #4f46e5;
+    --bs-link-hover-color: #4338ca;
+    --bs-code-color: #4f46e5;
+    /* Card */
+    --bs-card-bg: #ffffff;
+    --bs-card-border-color: #e2e8f0;
+    --bs-card-cap-bg: #f8fafc;
+    /* Table */
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: #f8fafc;
+    --bs-table-hover-bg: #f1f5f9;
+    --bs-table-border-color: #e2e8f0;
+    /* Form inputs */
+    --bs-form-control-bg: #ffffff;
+    --bs-form-control-disabled-bg: #f8fafc;
+    /* Dropdown */
+    --bs-dropdown-bg: #ffffff;
+    --bs-dropdown-border-color: #e2e8f0;
+    --bs-dropdown-link-color: #475569;
+    --bs-dropdown-link-hover-bg: #f1f5f9;
+    --bs-dropdown-link-hover-color: #1e293b;
+    /* Modal */
+    --bs-modal-bg: #ffffff;
+    --bs-modal-border-color: #e2e8f0;
+    /* Badge (overridden further per-variant below) */
+    --bs-badge-font-size: 0.7rem;
+    --bs-badge-font-weight: 500;
+    --bs-badge-border-radius: 10px;
+    --bs-badge-padding-x: 0.6rem;
+    --bs-badge-padding-y: 0.2rem;
+    /* Button — primary maps to indigo */
+    --bs-btn-color: #fff;
+    /* Custom layout tokens */
+    --surface: #ffffff;
+    --surface-subtle: #f8fafc;
+    --surface-hover: #f1f5f9;
+    --sidebar-bg: #ffffff;
+    --topbar-bg: #ffffff;
+    --nav-text: #475569;
+    --nav-hover-bg: #f8fafc;
+    --nav-active-bg: #eef2ff;
+    --nav-active-tx: #4f46e5;
+    --nav-badge-bg: #e0e7ff;
+    --nav-badge-tx: #4338ca;
+    --notif-ring: #ffffff;
+    --scrollbar: #cbd5e1;
+}
+
+/* ── Dark theme: override Bootstrap tokens ── */
+[data-bs-theme="dark"] {
+    --bs-body-font-family: 'DM Sans', system-ui, sans-serif;
+    --bs-body-font-size: 0.9rem;
+    --bs-body-color: #e2e8f0;
+    --bs-body-bg: #0f172a;
+    --bs-secondary-color: #94a3b8;
+    --bs-tertiary-color: #64748b;
+    --bs-border-color: #2d3f55;
+    --bs-border-color-translucent: rgba(255,255,255,.08);
+    --bs-link-color: #818cf8;
+    --bs-link-hover-color: #a5b4fc;
+    --bs-card-bg: #1e293b;
+    --bs-card-border-color: #2d3f55;
+    --bs-card-cap-bg: #162032;
+    --bs-table-bg: transparent;
+    --bs-table-striped-bg: #162032;
+    --bs-table-hover-bg: #263348;
+    --bs-table-border-color: #2d3f55;
+    --bs-form-control-bg: #162032;
+    --bs-form-control-disabled-bg: #1a2540;
+    --bs-dropdown-bg: #1e293b;
+    --bs-dropdown-border-color: #2d3f55;
+    --bs-dropdown-link-color: #94a3b8;
+    --bs-dropdown-link-hover-bg: #263348;
+    --bs-dropdown-link-hover-color: #e2e8f0;
+    --bs-modal-bg: #1e293b;
+    --bs-modal-border-color: #2d3f55;
+    /* Success / danger in dark stay readable */
+    --bs-success-rgb: 74,222,128;
+    --bs-danger-rgb: 248,113,113;
+    --bs-warning-rgb: 251,191,36;
+    --surface: #1e293b;
+    --surface-subtle: #162032;
+    --surface-hover: #263348;
+    --sidebar-bg: #162032;
+    --topbar-bg: #1e293b;
+    --nav-text: #94a3b8;
+    --nav-hover-bg: #1e2d3d;
+    --nav-active-bg: #1e2d4a;
+    --nav-active-tx: #818cf8;
+    --nav-badge-bg: #1e2d4a;
+    --nav-badge-tx: #818cf8;
+    --notif-ring: #1e293b;
+    --scrollbar: #2d3f55;
+}
+
+/* ─── Bootstrap component overrides ───────────────────────── */
+
+/* body */
+body {
+    transition: background-color .25s ease, color .25s ease;
+    line-height: 1.6;
+}
+
+/* btn-primary → indigo */
+.btn-primary {
+    --bs-btn-bg: var(--indigo-600);
+    --bs-btn-border-color: var(--indigo-600);
+    --bs-btn-hover-bg: var(--indigo-700);
+    --bs-btn-hover-border-color: var(--indigo-700);
+    --bs-btn-active-bg: var(--indigo-700);
+    --bs-btn-active-border-color: var(--indigo-700);
+    --bs-btn-disabled-bg: var(--indigo-400);
+    --bs-btn-disabled-border-color: var(--indigo-400);
+    font-weight: 500;
+}
+
+/* btn-outline-secondary → themed border + text */
+.btn-outline-secondary {
+    --bs-btn-color: var(--bs-secondary-color);
+    --bs-btn-border-color: var(--bs-border-color);
+    --bs-btn-hover-color: var(--bs-body-color);
+    --bs-btn-hover-bg: var(--surface-hover);
+    --bs-btn-hover-border-color: var(--bs-border-color);
+    --bs-btn-active-color: var(--bs-body-color);
+    --bs-btn-active-bg: var(--surface-hover);
+    font-weight: 500;
+}
+
+/* card */
+.card {
+    border-color: var(--bs-card-border-color);
+    box-shadow: 0 1px 3px rgba(0,0,0,.06), 0 1px 2px rgba(0,0,0,.04);
+    transition: background-color .25s ease, border-color .25s ease;
+}
+
+[data-bs-theme="dark"] .card {
+    box-shadow: 0 1px 4px rgba(0,0,0,.3);
+}
+
+.card-header {
+    font-size: .9rem;
+    font-weight: 600;
+    border-bottom-color: var(--bs-card-border-color);
+}
+
+/* table */
+.table {
+    --bs-table-color: var(--bs-body-color);
+    font-size: .875rem;
+}
+
+    .table thead th {
+        font-size: .7rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: .6px;
+        color: var(--bs-tertiary-color);
+        background: var(--bs-card-cap-bg);
+        border-bottom-color: var(--bs-table-border-color);
+        white-space: nowrap;
+    }
+
+    .table td {
+        vertical-align: middle;
+    }
+
+/* DataTables dark-mode rows — Bootstrap's --bs-table-hover-bg drives hover */
+[data-bs-theme="dark"] table.dataTable tbody tr:hover > * {
+    background-color: var(--bs-table-hover-bg) !important;
+    color: var(--bs-body-color) !important;
+}
+
+[data-bs-theme="dark"] table.dataTable thead th,
+[data-bs-theme="dark"] table.dataTable thead td {
+    background: var(--bs-card-cap-bg) !important;
+    color: var(--bs-tertiary-color) !important;
+    border-bottom-color: var(--bs-table-border-color) !important;
+}
+
+[data-bs-theme="dark"] table.dataTable,
+[data-bs-theme="dark"] table.dataTable td {
+    color: var(--bs-body-color) !important;
+    border-color: var(--bs-table-border-color) !important;
+}
+
+/* DataTables controls inherit Bootstrap vars */
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+    background-color: var(--bs-form-control-bg) !important;
+    border: 1px solid var(--bs-border-color) !important;
+    color: var(--bs-body-color) !important;
+    border-radius: .375rem !important;
+    padding: .3rem .6rem !important;
+    font-size: .8rem !important;
+}
+
+    .dataTables_wrapper .dataTables_filter input:focus,
+    .dataTables_wrapper .dataTables_length select:focus {
+        border-color: var(--indigo-500) !important;
+        outline: none;
+        box-shadow: 0 0 0 .2rem rgba(99,102,241,.2) !important;
+    }
+
+.dataTables_wrapper .dataTables_filter label,
+.dataTables_wrapper .dataTables_length label,
+.dataTables_wrapper .dataTables_info {
+    color: var(--bs-secondary-color) !important;
+    font-size: .8rem !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    border-radius: .375rem !important;
+    font-size: .8rem !important;
+    padding: .25rem .55rem !important;
+    border: 1px solid var(--bs-border-color) !important;
+    background: var(--surface) !important;
+    color: var(--bs-secondary-color) !important;
+    margin: 0 2px !important;
+}
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+        background: var(--indigo-600) !important;
+        border-color: var(--indigo-600) !important;
+        color: #fff !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button:hover:not(.current):not(.disabled) {
+        background: var(--surface-hover) !important;
+        border-color: var(--bs-border-color) !important;
+        color: var(--bs-body-color) !important;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover {
+        color: var(--bs-tertiary-color) !important;
+        background: var(--surface-subtle) !important;
+        cursor: default !important;
+    }
+
+.dt-buttons .btn {
+    background: var(--surface) !important;
+    border: 1px solid var(--bs-border-color) !important;
+    color: var(--bs-secondary-color) !important;
+    font-size: .8rem !important;
+    border-radius: .375rem !important;
+}
+
+    .dt-buttons .btn:hover {
+        background: var(--surface-hover) !important;
+        color: var(--bs-body-color) !important;
+    }
+
+/* form controls */
+.form-control, .form-select {
+    background-color: var(--bs-form-control-bg);
+    border-color: var(--bs-border-color);
+    color: var(--bs-body-color);
+    transition: background-color .25s, border-color .25s;
+}
+
+    .form-control::placeholder {
+        color: var(--bs-tertiary-color);
+    }
+
+    .form-control:focus, .form-select:focus {
+        border-color: var(--indigo-500);
+        box-shadow: 0 0 0 .2rem rgba(99,102,241,.2);
+        background-color: var(--bs-form-control-bg);
+    }
+
+.form-floating > label {
+    color: var(--bs-tertiary-color);
+}
+
+[data-bs-theme="dark"] .form-floating > .form-control:focus ~ label,
+[data-bs-theme="dark"] .form-floating > .form-control:not(:placeholder-shown) ~ label {
+    color: var(--indigo-400);
+}
+
+[data-bs-theme="dark"] .form-check-input {
+    background-color: var(--surface-subtle);
+    border-color: var(--bs-border-color);
+}
+
+    [data-bs-theme="dark"] .form-check-input:checked {
+        background-color: var(--indigo-500);
+        border-color: var(--indigo-500);
+    }
+
+/* dropdown */
+.dropdown-menu {
+    border-color: var(--bs-dropdown-border-color);
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+}
+
+[data-bs-theme="dark"] .dropdown-menu {
+    box-shadow: 0 4px 16px rgba(0,0,0,.4);
+}
+
+/* modal */
+.modal-content {
+    border-color: var(--bs-modal-border-color);
+}
+
+/* alert */
+.alert {
+    font-size: .875rem;
+}
+
+/* nav-link override for sidebar */
+.nav-link {
+    color: var(--nav-text);
+    font-size: .875rem;
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .5rem 1.125rem;
+    border-radius: 0;
+    position: relative;
+    transition: background .15s, color .15s;
+}
+
+    .nav-link i {
+        width: 18px;
+        font-size: 1rem;
+        flex-shrink: 0;
+        opacity: .65;
+    }
+
+    .nav-link:hover {
+        background: var(--nav-hover-bg);
+        color: var(--bs-body-color);
+    }
+
+    .nav-link.active {
+        color: var(--nav-active-tx);
+        background: var(--nav-active-bg);
+        font-weight: 500;
+    }
+
+        .nav-link.active i {
+            opacity: 1;
+        }
+
+        .nav-link.active::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 4px;
+            bottom: 4px;
+            width: 3px;
+            background: var(--nav-active-tx);
+            border-radius: 0 3px 3px 0;
+        }
+
+/* badge — status variants use Bootstrap's subtle utilities */
+.badge {
+    font-size: .7rem;
+    font-weight: 500;
+    border-radius: 10px;
+    padding: .2rem .6rem;
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+}
+
+/* ─── Custom structural elements ──────────────────────────── */
+/* (No component equivalent in Bootstrap — plain descriptive names) */
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: var(--sidebar-width);
+    background: var(--sidebar-bg);
+    border-right: 1px solid var(--bs-border-color);
+    display: flex;
+    flex-direction: column;
+    z-index: 1040;
+    transition: transform .25s ease, background .25s ease, border-color .25s ease;
+}
+
+    .sidebar.collapsed {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+.sidebar-brand {
+    height: var(--topbar-height);
+    padding: 0 1.25rem;
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    border-bottom: 1px solid var(--bs-border-color);
+    flex-shrink: 0;
+}
+
+.brand-mark {
+    width: 32px;
+    height: 32px;
+    background: var(--indigo-600);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+    .brand-mark i {
+        color: #fff;
+        font-size: 1rem;
+    }
+
+.brand-name {
+    font-size: .9rem;
+    font-weight: 600;
+    color: var(--bs-body-color);
+    letter-spacing: -.3px;
+}
+
+.brand-sub {
+    font-size: .7rem;
+    color: var(--bs-tertiary-color);
+}
+
+.nav-section {
+    padding: .875rem 1.125rem .25rem;
+    font-size: .65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: var(--bs-tertiary-color);
+}
+
+.nav-badge {
+    margin-left: auto;
+    font-size: .65rem;
+    font-weight: 500;
+    background: var(--nav-badge-bg);
+    color: var(--nav-badge-tx);
+    padding: 1px 7px;
+    border-radius: 10px;
+}
+
+.sidebar-footer {
+    padding: .875rem 1.125rem;
+    border-top: 1px solid var(--bs-border-color);
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+}
+
+/* topbar */
+.topbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: var(--sidebar-width);
+    height: var(--topbar-height);
+    background: var(--topbar-bg);
+    border-bottom: 1px solid var(--bs-border-color);
+    display: flex;
+    align-items: center;
+    padding: 0 1.5rem;
+    gap: .75rem;
+    z-index: 1030;
+    transition: left .25s ease, background .25s ease, border-color .25s ease;
+}
+
+    .topbar.sidebar-collapsed {
+        left: 0;
+    }
+
+/* breadcrumb override */
+.breadcrumb {
+    font-size: .8rem;
+    margin: 0;
+    padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    opacity: .4;
+}
+
+.breadcrumb-item.active {
+    color: var(--bs-body-color);
+    font-weight: 500;
+}
+
+.breadcrumb-item a {
+    color: var(--bs-secondary-color);
+    text-decoration: none;
+}
+
+    .breadcrumb-item a:hover {
+        color: var(--indigo-600);
+    }
+
+/* icon button — small square button used in topbar */
+.icon-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: .375rem;
+    border: 1px solid var(--bs-border-color);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--bs-secondary-color);
+    position: relative;
+    transition: background .15s, color .15s;
+}
+
+    .icon-btn:hover {
+        background: var(--surface-hover);
+        color: var(--indigo-600);
+    }
+
+/* notif dot on bell */
+.notif-dot {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 7px;
+    height: 7px;
+    background: var(--indigo-500);
+    border-radius: 50%;
+    border: 2px solid var(--notif-ring);
+}
+
+/* theme toggle button */
+.theme-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: .375rem;
+    border: 1px solid var(--bs-border-color);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: var(--bs-secondary-color);
+    transition: background .15s, color .15s, transform .3s ease;
+}
+
+    .theme-btn:hover {
+        background: var(--surface-hover);
+        color: var(--indigo-600);
+        transform: rotate(12deg);
+    }
+    /* Icon visibility owned by JS — .is-light/.is-dark on the button itself */
+    .theme-btn .theme-icon-sun,
+    .theme-btn .theme-icon-moon {
+        display: none;
+    }
+
+    .theme-btn.is-light .theme-icon-moon {
+        display: inline;
+    }
+
+    .theme-btn.is-dark .theme-icon-sun {
+        display: inline;
+    }
+
+/* user pill in topbar */
+.user-pill {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    padding: .3rem .75rem .3rem .375rem;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: .8rem;
+    color: var(--bs-secondary-color);
+    background: transparent;
+    transition: background .15s;
+}
+
+    .user-pill:hover {
+        background: var(--surface-hover);
+    }
+
+/* main content area */
+.main-content {
+    flex: 1;
+    min-width: 0;
+    margin-left: var(--sidebar-width);
+    margin-top: var(--topbar-height);
+    min-height: calc(100vh - var(--topbar-height));
+    padding: 1.75rem;
+    transition: margin-left .25s ease;
+}
+
+    .main-content.sidebar-collapsed {
+        margin-left: 0;
+    }
+
+/* ── Page header — Variant A ── */
+.page-header {
+    width: 100%;
+    padding-bottom: .875rem;
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.page-header-bc {
+    margin-bottom: .375rem;
+}
+
+.page-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+}
+
+.page-header-identity {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    min-width: 0;
+}
+
+.page-header-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: .5rem;
+    background: var(--nav-badge-bg);
+    color: var(--nav-badge-tx);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    flex-shrink: 0;
+    transition: background .25s, color .25s;
+}
+
+.page-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    letter-spacing: -.3px;
+    margin-bottom: 0;
+    color: var(--bs-body-color);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.page-subtitle {
+    font-size: .78rem;
+    color: var(--bs-secondary-color);
+    margin-top: .1rem;
+    margin-bottom: 0;
+}
+
+.page-header-actions {
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+    flex-shrink: 0;
+}
+
+/* stat card — metric summary (not a full Bootstrap card) */
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--bs-border-color);
+    border-radius: .5rem;
+    padding: 1.125rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,.06);
+    transition: background .25s, border-color .25s;
+}
+
+.stat-label {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--bs-tertiary-color);
+    margin-bottom: .375rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -.5px;
+    line-height: 1;
+}
+
+.stat-delta {
+    font-size: .75rem;
+    margin-top: .375rem;
+    display: flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+/* avatar circle */
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: .7rem;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+/* badge dot (status indicator inside a badge) */
+.badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* form section divider inside upsert form */
+.form-section {
+    border-bottom: 1px solid var(--bs-border-color);
+    padding-bottom: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+    .form-section:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+        margin-bottom: 0;
+    }
+
+.form-section-title {
+    font-size: .7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .7px;
+    color: var(--bs-tertiary-color);
+    margin-bottom: .875rem;
+}
+
+/* password strength */
+.strength-bar {
+    height: 3px;
+    border-radius: 2px;
+    background: var(--bs-border-color);
+    margin-top: .4rem;
+    overflow: hidden;
+}
+
+.strength-fill {
+    height: 100%;
+    border-radius: 2px;
+    width: 0;
+    transition: width .3s, background .3s;
+}
+
+.strength-hint {
+    font-size: .7rem;
+    color: var(--bs-tertiary-color);
+    margin-top: .25rem;
+    min-height: 1em;
+}
+
+/* password toggle button inside floating label input */
+.pwd-wrapper {
+    position: relative;
+}
+
+.pwd-toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 4px;
+    color: var(--bs-tertiary-color);
+    cursor: pointer;
+    border-radius: .375rem;
+    line-height: 1;
+    transition: color .15s, background .15s;
+}
+
+    .pwd-toggle:hover {
+        color: var(--indigo-600);
+        background: var(--surface-hover);
+    }
+
+/* status toggle row */
+.switch-row {
+    display: flex;
+    align-items: center;
+    gap: .75rem;
+    padding: .875rem 0;
+    border-top: 1px solid var(--bs-border-color);
+    border-bottom: 1px solid var(--bs-border-color);
+}
+
+/* guideline list item */
+.guideline-item {
+    display: flex;
+    gap: .625rem;
+    margin-bottom: .5rem;
+    font-size: .8rem;
+    color: var(--bs-secondary-color);
+}
+
+    .guideline-item i {
+        flex-shrink: 0;
+        margin-top: 2px;
+        font-size: .7rem;
+        color: var(--bs-success);
+    }
+
+/* danger zone card modifier */
+.card.danger-zone {
+    border-color: var(--bs-danger) !important;
+    opacity: .85;
+}
+
+    .card.danger-zone:hover {
+        opacity: 1;
+    }
+
+    .card.danger-zone .card-header {
+        background: rgba(var(--bs-danger-rgb), .1);
+    }
+
+/* responsive */
+@media (max-width: 991.98px) {
+    .sidebar {
+        transform: translateX(calc(-1 * var(--sidebar-width)));
+    }
+
+        .sidebar.open {
+            transform: translateX(0);
+        }
+
+    .topbar {
+        left: 0 !important;
+    }
+
+    .main-content {
+        margin-left: 0 !important;
+    }
+}
+
+/* scrollbar */
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar);
+    border-radius: 4px;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--bs-tertiary-color);
+    }
+
+.nav-section-chevron {
+    transition: transform 0.2s ease;
+}
+
+.collapsed .nav-section-chevron {
+    transform: rotate(-90deg);
+}
+
+/* ── Collapsible section header (ModuleType with children) ── */
+.nav-section-toggle {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .5rem 1.125rem;
+    color: var(--nav-text);
+    font-size: .875rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    font-size: .7rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background .15s, color .15s;
+    width: 100%;
+}
+
+    .nav-section-toggle i:first-child {
+        width: 18px;
+        font-size: 1rem;
+        flex-shrink: 0;
+        opacity: .65;
+    }
+
+    .nav-section-toggle:hover {
+        background: var(--nav-hover-bg);
+        color: var(--bs-body-color);
+    }
+
+    .nav-section-toggle:not(.collapsed) {
+        color: var(--nav-active-tx);
+    }
+
+        .nav-section-toggle:not(.collapsed) i:first-child {
+            opacity: 1;
+        }
+
+    /* Chevron rotation */
+    .nav-section-toggle .nav-section-chevron {
+        transition: transform .2s ease;
+    }
+
+    .nav-section-toggle.collapsed .nav-section-chevron {
+        transform: rotate(-90deg);
+    }
+
+/* ── Nested module group link (Module with children) ── */
+.nav-link-group {
+    /* Inherits .nav-link layout — just add chevron behavior */
+    font-weight: 500;
+}
+
+    .nav-link-group .nav-section-chevron {
+        transition: transform .2s ease;
+    }
+
+    .nav-link-group.collapsed .nav-section-chevron {
+        transform: rotate(-90deg);
+    }
+
+/* ── Sub-nav indent for nested modules ── */
+.nav-sub {
+    padding-left: 1rem;
+    border-left: 1px solid var(--bs-border-color);
+    margin: .125rem .75rem .25rem 2.25rem;
+}
+
+    .nav-sub .nav-link {
+        padding: .35rem .75rem;
+        font-size: .825rem;
+    }
+
+    /* Deeper nesting */
+    .nav-sub .nav-sub {
+        margin-left: 1rem;
+    }
+
+/* ── User profile dropdown ── */
+.user-dropdown-menu {
+    min-width: 210px;
+    padding: .375rem;
+    border-radius: .5rem;
+    border-color: var(--bs-dropdown-border-color);
+    box-shadow: 0 4px 16px rgba(0,0,0,.1);
+}
+
+[data-bs-theme="dark"] .user-dropdown-menu {
+    box-shadow: 0 4px 20px rgba(0,0,0,.4);
+}
+
+/* Avatar + name block at top */
+.user-dropdown-header {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .625rem .75rem;
+}
+
+/* All items */
+.user-dropdown-menu .dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: .625rem;
+    padding: .45rem .75rem;
+    border-radius: .375rem;
+    font-size: .85rem;
+    color: var(--bs-dropdown-link-color);
+    transition: background .15s, color .15s;
+}
+
+    .user-dropdown-menu .dropdown-item i {
+        width: 16px;
+        font-size: .9rem;
+        opacity: .65;
+        flex-shrink: 0;
+    }
+
+    .user-dropdown-menu .dropdown-item:hover {
+        background: var(--bs-dropdown-link-hover-bg);
+        color: var(--bs-dropdown-link-hover-color);
+    }
+
+        .user-dropdown-menu .dropdown-item:hover i {
+            opacity: 1;
+        }
+
+    /* Sign out danger */
+    .user-dropdown-menu .dropdown-item.text-danger {
+        color: var(--bs-danger) !important;
+    }
+
+        .user-dropdown-menu .dropdown-item.text-danger i {
+            opacity: 1;
+        }
+
+        .user-dropdown-menu .dropdown-item.text-danger:hover {
+            background: rgba(var(--bs-danger-rgb), .1);
+            color: var(--bs-danger) !important;
+        }
+
+/* Divider */
+.user-dropdown-menu .dropdown-divider {
+    margin: .25rem 0;
+    border-color: var(--bs-border-color);
+}
+
+/* Remove default form margins inside dropdown */
+.user-dropdown-menu form {
+    margin: 0;
+}

@@ -1,0 +1,1 @@
+﻿global using DamayanFS.App.ViewModels.Shared;

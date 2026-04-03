@@ -1,0 +1,105 @@
+﻿@using DamayanFS.App.ViewModels.Shared
+@model SidebarViewModel
+
+<!-- ══════════ SIDEBAR ══════════ -->
+<aside class="sidebar" id="sidebar">
+
+    <!-- Brand -->
+    <div class="sidebar-brand">
+        <div class="brand-mark"><i class="bi bi-hexagon-fill"></i></div>
+        <div>
+            <div class="brand-name">DamayanFS</div>
+            <div class="brand-sub">Admin Console</div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="flex-grow-1 overflow-y-auto py-2" id="sidebarNav" aria-label="Main navigation">
+
+        @foreach (var moduleType in Model.MenuTree)
+        {
+            @if (moduleType.HasLink)
+            {
+                <!--Direct link ModuleType -->
+                @if (moduleType.InMaintenance)
+                {
+                    <span class="nav-link" style="opacity:.5;cursor:default;pointer-events:none;" title="Under Maintenance">
+                        @if (!string.IsNullOrEmpty(moduleType.Icon))
+                        {
+                            <i class="@moduleType.Icon"></i>
+                        }
+                        @moduleType.Name
+                        <i class="bi bi-wrench-adjustable text-warning ms-auto" style="font-size:.7rem;"></i>
+                    </span>
+                }
+                else
+                {
+                    <a asp-controller="@moduleType.Controller"
+                       asp-action="@moduleType.Action"
+                       class="nav-link @(moduleType.IsActive ? "active" : "")">
+                        @if (!string.IsNullOrEmpty(moduleType.Icon))
+                        {
+                            <i class="@moduleType.Icon"></i>
+                        }
+                        @moduleType.Name
+                    </a>
+                }
+            }
+            else
+            {
+                <!--Section header with collapsible children -->
+                var sectionId = $"section-{moduleType.Id}";
+                <div class="nav-group-header @(moduleType.IsActive ? "active" : "")">
+                    <a class="nav-section-toggle @(moduleType.IsActive ? "" : "collapsed")"
+                       data-bs-toggle="collapse"
+                       href="#@sectionId"
+                       role="button"
+                       aria-expanded="@(moduleType.IsActive ? "true" : "false")"
+                       aria-controls="@sectionId">
+                        @if (!string.IsNullOrEmpty(moduleType.Icon))
+                        {
+                            <i class="@moduleType.Icon"></i>
+                        }
+                        <span>@moduleType.Name</span>
+                        @if (moduleType.InMaintenance)
+                        {
+                            <i class="bi bi-wrench-adjustable text-warning ms-1" style="font-size:.7rem;" title="Under Maintenance"></i>
+                        }
+                        <i class="bi bi-chevron-down nav-section-chevron ms-auto"></i>
+                    </a>
+                </div>
+                <div class="collapse @(moduleType.IsActive ? "show" : "")" id="@sectionId">
+                    @foreach (var module in moduleType.Modules)
+                    {
+                        @await Html.PartialAsync("Components/Sidebar/_SidebarModule", module)
+                    }
+                </div>
+            }
+        }
+
+    </nav>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+        <div class="avatar" style="background:var(--nav-badge-bg);color:var(--nav-badge-tx)">
+            @Model.Initials
+        </div>
+        <div class="flex-grow-1 overflow-hidden">
+            <div class="text-truncate" style="font-size:.8rem;font-weight:500">
+                @Model.DisplayName
+            </div>
+            <div style="font-size:.7rem;color:var(--bs-tertiary-color)">
+                Administrator
+            </div>
+        </div>
+        <form asp-controller="Account" asp-action="Logout" method="post" class="d-inline">
+            @Html.AntiForgeryToken()
+            <button type="submit"
+                    class="icon-btn text-decoration-none border-0"
+                    title="Sign out">
+                <i class="bi bi-box-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+
+</aside>

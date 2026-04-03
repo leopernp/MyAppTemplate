@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.7.1",
+      "destination": "wwwroot/frontend-lib/jquery"
+    },
+    {
+      "library": "bootstrap@5.3.3",
+      "destination": "wwwroot/frontend-lib/bootstrap"
+    },
+    {
+      "library": "bootstrap-icons@1.11.3",
+      "destination": "wwwroot/frontend-lib/bootstrap-icons"
+    },
+    {
+      "library": "datatables.net@2.1.8",
+      "destination": "wwwroot/frontend-lib/datatables.net"
+    },
+    {
+      "library": "datatables.net-bs5@2.1.8",
+      "destination": "wwwroot/frontend-lib/datatables.net-bs5"
+    },
+    {
+      "library": "datatables.net-buttons@3.1.2",
+      "destination": "wwwroot/frontend-lib/datatables.net-buttons"
+    },
+    {
+      "library": "datatables.net-buttons-bs5@3.1.2",
+      "destination": "wwwroot/frontend-lib/datatables.net-buttons-bs5"
+    },
+    {
+      "library": "jszip@3.10.1",
+      "destination": "wwwroot/frontend-lib/jszip"
+    },
+    {
+      "library": "pdfmake@0.2.7",
+      "destination": "wwwroot/frontend-lib/pdfmake"
+    },
+    {
+      "library": "sweetalert2@11.10.1",
+      "destination": "wwwroot/frontend-lib/sweetalert2"
+    },
+    {
+      "library": "signalr.js@2.4.3",
+      "destination": "wwwroot/frontend-lib/signalr.js/"
+    },
+    {
+      "provider": "unpkg",
+      "library": "@microsoft/signalr@10.0.0",
+      "destination": "wwwroot/frontend-lib/microsoft/signalr/"
+    },
+    {
+      "library": "moment.js@2.30.1",
+      "destination": "wwwroot/frontend-lib/moment.js/"
+    },
+    {
+      "provider": "jsdelivr",
+      "library": "tom-select@2.3.1",
+      "destination": "wwwroot/frontend-lib/tom-select",
+      "files": [
+        "dist/css/tom-select.bootstrap5.min.css",
+        "dist/js/tom-select.complete.min.js"
+      ]
+    }
+  ]
+}

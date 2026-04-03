@@ -1,0 +1,72 @@
+﻿/* Fixed height for both columns to keep UI stable */
+.log-sidebar-scroll {
+    height: calc(100vh - 250px);
+    overflow-y: auto;
+}
+
+/* Modern Terminal Look */
+.log-display {
+    height: calc(100vh - 250px);
+    background-color: #0d1117; /* GitHub Dark style background */
+    color: #e6edf3;
+    padding: 1.25rem;
+    font-family: 'Cascadia Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    border-bottom-left-radius: 0.5rem;
+    border-bottom-right-radius: 0.5rem;
+}
+
+/* Terminal Window Dots */
+.terminal-dots .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+/* Custom Item Hover for Sidebar */
+.log-file-item {
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    text-align: left;
+    color: var(--bs-body-color);
+    transition: all 0.2s;
+}
+
+    .log-file-item:hover {
+        background-color: var(--bs-secondary-bg);
+        border-left-color: var(--bs-primary-border-subtle);
+    }
+
+    .log-file-item.active {
+        background-color: var(--bs-primary-bg-subtle);
+        color: var(--bs-primary-text-emphasis);
+        border-left-color: var(--bs-primary);
+        font-weight: 600;
+    }
+
+.hover-white:hover {
+    color: white !important;
+}
+
+/* Scrollbar Styling */
+.log-display::-webkit-scrollbar {
+    width: 10px;
+}
+
+.log-display::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+
+.log-display::-webkit-scrollbar-thumb {
+    background: #30363d;
+    border-radius: 5px;
+    border: 2px solid #0d1117;
+}

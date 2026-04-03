@@ -1,0 +1,76 @@
+﻿<!-- ══════════ TOPBAR ══════════ -->
+<header class="topbar" id="topbar">
+    <button class="icon-btn" id="sidebarToggle" title="Toggle sidebar" aria-label="Toggle sidebar">
+        <i class="bi bi-list fs-5"></i>
+    </button>
+    <div class="ms-auto d-flex align-items: center gap-2">
+        <button class="theme-btn" id="themeToggle" aria-label="Toggle theme" title="Toggle dark mode">
+            <i class="bi bi-sun-fill theme-icon-sun" style="font-size:.9rem"></i>
+            <i class="bi bi-moon-fill theme-icon-moon" style="font-size:.85rem"></i>
+        </button>
+        <button class="icon-btn" title="Notifications">
+            <i class="bi bi-bell"></i>
+            <span class="notif-dot"></span>
+        </button>
+        <div class="dropdown">
+            <button class="user-pill dropdown-toggle"
+                    data-bs-toggle="dropdown"
+                    data-bs-offset="0,6"
+                    aria-expanded="false">
+                <div class="avatar"
+                     style="width:26px;height:26px;font-size:.65rem;background:var(--nav-badge-bg);color:var(--nav-badge-tx)">
+                    @(User.Identity?.Name?.Substring(0, 2).ToUpper() ?? "?")
+                </div>
+                <span>@User.Identity?.Name</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end user-dropdown-menu">
+                <!-- Header -->
+                <li>
+                    <div class="user-dropdown-header">
+                        <div class="avatar mb-1"
+                             style="width:32px;height:32px;font-size:.75rem;background:var(--nav-badge-bg);color:var(--nav-badge-tx)">
+                            @(User.Identity?.Name?.Substring(0, 2).ToUpper() ?? "?")
+                        </div>
+                        <div>
+                            <div style="font-size:.8rem;font-weight:600;color:var(--bs-body-color)">
+                                @User.Identity?.Name
+                            </div>
+                            <div style="font-size:.7rem;color:var(--bs-tertiary-color)">Administrator</div>
+                        </div>
+                    </div>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <!-- Account -->
+                <li>
+                    <a class="dropdown-item" asp-controller="Account" asp-action="Profile">
+                        <i class="bi bi-person"></i> Profile
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-item" asp-area="Admin" asp-controller="Settings" asp-action="Index">
+                        <i class="bi bi-gear"></i> Settings
+                    </a>
+                </li>
+                @if (User.FindFirst("IsSuperAdmin")?.Value == "True")
+                {
+                <li><hr class="dropdown-divider" /></li>
+                <!-- Tools -->
+                <li>
+                    <a class="dropdown-item" asp-controller="Tools" asp-action="Index">
+                        <i class="bi bi-tools"></i> Maintenance Tools
+                    </a>
+                </li>
+                }
+                <!-- Sign out -->
+                <li>
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        @Html.AntiForgeryToken()
+                        <button type="submit" class="dropdown-item text-danger">
+                            <i class="bi bi-box-arrow-right"></i> Sign out
+                        </button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

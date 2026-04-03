@@ -1,0 +1,132 @@
+﻿@using DamayanFS.App.ViewModels.Shared
+@model PageHeaderViewModel
+
+<div class="page-header mb-3">
+
+    @* ── Breadcrumb row ── *@
+    @if (Model?.BreadcrumbItems?.Count > 0)
+    {
+        <nav class="page-header-bc" aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0">
+                @foreach (var item in Model.BreadcrumbItems)
+                {
+                    <li class="breadcrumb-item @(item.IsActive ? "active" : "")"
+                        @(item.IsActive? Html.Raw("aria-current=\"page\"") : Html.Raw(""))>
+
+                        @if (item.IsActive)
+                        {
+                            @if (!string.IsNullOrEmpty(item.Icon))
+                            {
+                                <i class="@item.Icon me-1" aria-hidden="true"></i>
+                            }
+                            @item.Title
+                        }
+                        else
+                        {
+                            <a href="@item.Url">
+                                @if (!string.IsNullOrEmpty(item.Icon))
+                                {
+                                    <i class="@item.Icon me-1" aria-hidden="true"></i>
+                                }
+                                @item.Title
+                            </a>
+                        }
+                    </li>
+                }
+            </ol>
+        </nav>
+    }
+
+    @* ── Title + actions row ── *@
+    <div class="page-header-row">
+
+        @* Identity: icon box + title + subtitle *@
+        <div class="page-header-identity">
+            @if (!string.IsNullOrEmpty(Model?.Icon))
+            {
+                <div class="page-header-icon" aria-hidden="true">
+                    <i class="@Model.Icon"></i>
+                </div>
+            }
+            <div>
+                <h1 class="page-title">@Model?.Title</h1>
+                @if (!string.IsNullOrEmpty(Model?.Subtitle))
+                {
+                    <p class="page-subtitle">@Model.Subtitle</p>
+                }
+            </div>
+        </div>
+
+        @* Actions — rendered from ActionButtons; legacy shorthand as fallback *@
+        @{
+            var buttons = Model?.ActionButtons ?? new List<PageHeaderViewModel.PageHeaderActionButton>();
+            bool hasLegacy = buttons.Count == 0 && !string.IsNullOrEmpty(Model?.ActionButtonText);
+        }
+
+        @if (buttons.Count > 0 || hasLegacy)
+        {
+            <div class="page-header-actions">
+
+                @foreach (var btn in buttons)
+                {
+                    @if (!string.IsNullOrEmpty(btn.Url))
+                    {
+                        <a href="@btn.Url" class="@btn.CssClass"
+                           @foreach (var attr in btn.Attributes ?? new Dictionary<string, string>())
+                           {
+                               @Html.Raw($"{attr.Key}=\"{Html.Encode(attr.Value)}\"")
+                           }
+            >
+                            @if (!string.IsNullOrEmpty(btn.Icon))
+                            {
+                                <i class="@btn.Icon me-1" aria-hidden="true"></i>
+                            }
+                            @btn.Text
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="@btn.ButtonType" class="@btn.CssClass"
+                                @foreach (var attr in btn.Attributes ?? new Dictionary<string, string>())
+                                {
+                                    @Html.Raw($"{attr.Key}=\"{Html.Encode(attr.Value)}\"")
+                                }
+            >
+                            @if (!string.IsNullOrEmpty(btn.Icon))
+                            {
+                                <i class="@btn.Icon me-1" aria-hidden="true"></i>
+                            }
+                            @btn.Text
+                        </button>
+                    }
+                }
+
+                @if (hasLegacy)
+                {
+                    @if (!string.IsNullOrEmpty(Model!.ActionButtonUrl))
+                    {
+                        <a href="@Model.ActionButtonUrl" class="btn btn-sm btn-primary">
+                            @if (!string.IsNullOrEmpty(Model.ActionButtonIcon))
+                            {
+                                <i class="@Model.ActionButtonIcon me-1" aria-hidden="true"></i>
+                            }
+                            @Model.ActionButtonText
+                        </a>
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-sm btn-primary">
+                            @if (!string.IsNullOrEmpty(Model!.ActionButtonIcon))
+                            {
+                                <i class="@Model.ActionButtonIcon me-1" aria-hidden="true"></i>
+                            }
+                            @Model.ActionButtonText
+                        </button>
+                    }
+                }
+
+            </div>
+        }
+
+    </div>
+</div>

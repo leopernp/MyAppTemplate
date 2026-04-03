@@ -1,0 +1,130 @@
+﻿/* ═══════════════════════════════════════════════════════════
+   SweetAlert2 — DamayanFS Theme Integration
+   ═══════════════════════════════════════════════════════════ */
+
+/* Base Popup Styles */
+.swal2-popup {
+    font-family: var(--bs-body-font-family);
+    font-size: var(--bs-body-font-size);
+    background: var(--bs-modal-bg) !important;
+    color: var(--bs-body-color) !important;
+    border: 1px solid var(--bs-border-color);
+    border-radius: 0.75rem !important; /* Matches your card/modal aesthetic */
+    box-shadow: 0 10px 25px rgba(0,0,0,.2) !important;
+}
+
+/* Titles and Text */
+.swal2-title {
+    color: var(--bs-body-color) !important;
+    font-size: 1.1rem !important;
+    font-weight: 600 !important;
+}
+
+.swal2-html-container {
+    color: var(--bs-secondary-color) !important;
+    line-height: 1.6 !important;
+}
+
+/* Buttons — Primary/Confirm (Indigo) */
+.swal2-confirm.swal2-styled {
+    background-color: var(--indigo-600) !important;
+    border-radius: 0.375rem !important;
+    font-weight: 500 !important;
+    padding: 0.5rem 1.25rem !important;
+}
+
+    .swal2-confirm.swal2-styled:hover {
+        background-color: var(--indigo-700) !important;
+    }
+
+/* Buttons — Deny/Danger (Slate/Red) */
+.swal2-deny.swal2-styled,
+.swal2-cancel.swal2-styled {
+    border-radius: 0.375rem !important;
+    font-weight: 500 !important;
+}
+
+/* Input Fields (for your ROLLBACK prompt) */
+.swal2-input {
+    background-color: var(--bs-form-control-bg) !important;
+    border: 1px solid var(--bs-border-color) !important;
+    color: var(--bs-body-color) !important;
+    font-size: 0.9rem !important;
+    border-radius: 0.375rem !important;
+    transition: border-color .25s, box-shadow .25s !important;
+}
+
+    .swal2-input:focus {
+        border-color: var(--indigo-500) !important;
+        box-shadow: 0 0 0 .2rem rgba(99,102,241,.2) !important;
+    }
+
+/* Validation Message */
+.swal2-validation-message {
+    background: var(--surface-subtle) !important;
+    color: var(--bs-danger) !important;
+    font-size: 0.8rem !important;
+}
+
+/* Toast Customization */
+.swal2-toast {
+    background: var(--surface) !important;
+    border: 1px solid var(--bs-border-color) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1) !important;
+}
+
+[data-bs-theme="dark"] .swal2-toast {
+    background: var(--surface-subtle) !important;
+    box-shadow: 0 4px 16px rgba(0,0,0,.4) !important;
+}
+
+/* Reduce top padding around the icon */
+.swal2-header {
+    padding-top: 1rem !important;
+}
+
+/* Bring Title closer to Icon */
+.swal2-title {
+    padding-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+}
+
+/* Tighten the text container */
+.swal2-html-container {
+    margin: 0 1.5rem 1rem !important;
+    font-size: 0.85rem !important; /* Matches your --bs-body-font-size */
+}
+
+/* Fix Button Spacing & Sizing */
+.swal2-actions {
+    margin-top: 0.5rem !important;
+    gap: 0.75rem; /* Add consistent gap between OK and Cancel */
+}
+
+/* Remove SweetAlert's default "puffy" button styles */
+.swal2-styled {
+    margin: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Ensure the SWAL input uses your Indigo focus ring */
+.swal2-input.form-control {
+    height: auto !important;
+    padding: .5rem .75rem !important;
+    font-size: .85rem !important;
+    box-shadow: none !important;
+    border: 1px solid var(--bs-border-color) !important;
+}
+
+    .swal2-input.form-control:focus {
+        border-color: var(--indigo-500) !important;
+        box-shadow: 0 0 0 .2rem rgba(99,102,241,.2) !important;
+    }
+
+/* Validation text styling */
+.swal2-validation-message {
+    background: transparent !important;
+    color: var(--bs-danger) !important;
+    font-weight: 500;
+    margin-top: 0.5rem !important;
+}

@@ -1,0 +1,137 @@
+@model DamayanFS.App.ViewModels.ModuleType.ModuleTypeIndexViewModel
+
+<style>
+    /* Ensure icon picker modal is above the edit module type modal */
+    #modalIconPickerMT.show {
+        z-index: 1061 !important;
+    }
+</style>
+
+@await Component.InvokeAsync("PageHeader", Model.PageHeader)
+
+<div id="pagePermissions"
+     data-can-create="@Model.CanCreate.ToString().ToLower()"
+     data-can-update="@Model.CanUpdate.ToString().ToLower()"
+     data-can-delete="@Model.CanDelete.ToString().ToLower()"
+     style="display:none;"></div>
+
+<div class="d-flex justify-content-between align-items-center mb-2">
+    <button type="button" class="btn btn-sm btn-outline-secondary" id="btnRefreshModuleTypes">
+        <i class="bi bi-arrow-clockwise"></i> Refresh
+    </button>
+    <div class="input-group input-group-sm" style="max-width: 260px;">
+        <span class="input-group-text border-end-0 bg-transparent"><i class="bi bi-search text-muted"></i></span>
+        <input type="text" class="form-control border-start-0" id="tableModuleTypesSearch" placeholder="Search module types...">
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-hover" id="tableModuleTypes">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Icon</th>
+                <th>Order</th>
+                <th>Active</th>
+                <th>Maintenance</th>
+                <th>Created By</th>
+                <th>Created At</th>
+                <th>Modified By</th>
+                <th>Modified At</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<!-- Edit Module Type Modal -->
+<div class="modal fade" id="modalEditModuleType" tabindex="-1" aria-labelledby="modalEditModuleTypeLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modalEditModuleTypeLabel">Edit Module Type</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditModuleType" novalidate>
+                    <input type="hidden" asp-for="ModuleType.Id" />
+                    <div class="row g-3">
+                        <div class="col-md-8">
+                            <label asp-for="ModuleType.Name" class="form-label form-label-sm"></label>
+                            <input asp-for="ModuleType.Name" class="form-control form-control-sm" />
+                        </div>
+                        <div class="col-md-4">
+                            <label asp-for="ModuleType.DisplayOrder" class="form-label form-label-sm"></label>
+                            <input asp-for="ModuleType.DisplayOrder" type="number" class="form-control form-control-sm" min="0" />
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ModuleType.Controller" class="form-label form-label-sm"></label>
+                            <input asp-for="ModuleType.Controller" class="form-control form-control-sm" placeholder="e.g. Home" />
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ModuleType.Action" class="form-label form-label-sm"></label>
+                            <input asp-for="ModuleType.Action" class="form-control form-control-sm" placeholder="e.g. Index" />
+                        </div>
+                        <div class="col-12">
+                            <label asp-for="ModuleType.Description" class="form-label form-label-sm"></label>
+                            <textarea asp-for="ModuleType.Description" class="form-control form-control-sm" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-6">
+                            <label asp-for="ModuleType.Icon" class="form-label form-label-sm"></label>
+                            <div class="input-group input-group-sm">
+                                <span class="input-group-text" id="iconPreview"><i id="iconPreviewEl" class="bi bi-collection"></i></span>
+                                <input asp-for="ModuleType.Icon" class="form-control form-control-sm" id="ModuleType_Icon" placeholder="e.g. bi bi-collection" />
+                                <button type="button" class="btn btn-outline-secondary" id="btnIconPickerMT" title="Pick an icon">
+                                    <i class="bi bi-palette"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check form-switch mt-4">
+                                <input asp-for="ModuleType.IsActive" class="form-check-input" role="switch" />
+                                <label asp-for="ModuleType.IsActive" class="form-check-label small"></label>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="form-check form-switch mt-4">
+                                <input asp-for="ModuleType.InMaintenance" class="form-check-input" role="switch" />
+                                <label asp-for="ModuleType.InMaintenance" class="form-check-label small"></label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-sm btn-primary" id="btnSaveModuleType">Save Changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Icon Picker Modal -->
+<div class="modal fade" id="modalIconPickerMT" tabindex="-1" aria-labelledby="modalIconPickerMTLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title" id="modalIconPickerMTLabel">Select Icon</h6>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <input type="text" class="form-control form-control-sm" id="iconSearchInputMT" placeholder="Search icons...">
+                </div>
+                <div id="iconPickerGridMT" class="d-grid gap-2" style="grid-template-columns: repeat(auto-fill, minmax(50px, 1fr));">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/js/Utilities/datatables-helper.js" asp-append-version="true"></script>
+
+    <script src="~/js/Settings/ModuleType/ModuleTypeIndexScript.js" asp-append-version="true"></script>
+}

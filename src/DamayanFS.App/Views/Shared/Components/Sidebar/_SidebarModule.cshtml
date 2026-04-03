@@ -1,0 +1,60 @@
+@using DamayanFS.Contract.DTO
+@model ModuleDto
+
+@if (Model.ChildModules.Any())
+{
+    var moduleId = $"module-{Model.Id}";
+    <div class="nav-item-group">
+        <a class="nav-link nav-link-group @(Model.IsActive ? "" : "collapsed")"
+           data-bs-toggle="collapse"
+           href="#@moduleId"
+           role="button"
+           aria-expanded="@(Model.IsActive ? "true" : "false")"
+           aria-controls="@moduleId">
+            @if (!string.IsNullOrEmpty(Model.Icon))
+            {
+                <i class="@Model.Icon"></i>
+            }
+            <span>@Model.Name</span>
+            @if (!Model.IsAccessible)
+            {
+                <i class="bi bi-wrench-adjustable text-warning ms-1" style="font-size:.7rem;" title="Under Maintenance"></i>
+            }
+            <i class="bi bi-chevron-down nav-section-chevron ms-auto"></i>
+        </a>
+        <div class="collapse @(Model.IsActive ? "show" : "")" id="@moduleId">
+            <div class="nav-sub">
+                @foreach (var child in Model.ChildModules)
+                {
+                    @await Html.PartialAsync("~/Views/Shared/Components/Sidebar/_SidebarModule.cshtml", child)
+                }
+            </div>
+        </div>
+    </div>
+}
+else if (Model.HasLink)
+{
+    if (!Model.IsAccessible)
+    {
+        <span class="nav-link" style="opacity:.5;cursor:default;pointer-events:none;" title="Under Maintenance">
+            @if (!string.IsNullOrEmpty(Model.Icon))
+            {
+                <i class="@Model.Icon"></i>
+            }
+            <span>@Model.Name</span>
+            <i class="bi bi-wrench-adjustable text-warning ms-auto" style="font-size:.7rem;"></i>
+        </span>
+    }
+    else
+    {
+        <a asp-controller="@Model.Controller"
+           asp-action="@Model.Action"
+           class="nav-link @(Model.IsActive ? "active" : "")">
+            @if (!string.IsNullOrEmpty(Model.Icon))
+            {
+                <i class="@Model.Icon"></i>
+            }
+            <span>@Model.Name</span>
+        </a>
+    }
+}

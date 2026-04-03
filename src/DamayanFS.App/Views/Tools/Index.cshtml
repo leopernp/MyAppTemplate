@@ -1,0 +1,71 @@
+﻿@model DamayanFS.App.ViewModels.Tools.ToolIndexViewModel
+
+@await Component.InvokeAsync("PageHeader", Model.PageHeader)
+
+<div class="container-fluid">
+    <div class="tools-grid">
+        <a asp-controller="Tools" asp-action="LogViewer" class="tool-card">
+            <div class="tool-icon">
+                <i class="bi bi-terminal"></i>
+            </div>
+            <div class="tool-content">
+                <div class="tool-title">Log Viewer</div>
+                <div class="tool-description">
+                    Inspect application logs, track errors, and view system stack traces.
+                </div>
+            </div>
+        </a>
+
+        <a asp-controller="Tools" asp-action="Settings" class="tool-card">
+            <div class="tool-icon">
+                <i class="bi bi-sliders"></i>
+            </div>
+            <div class="tool-content">
+                <div class="tool-title">App Settings Editor</div>
+                <div class="tool-description">
+                    Update global configurations, API keys, and system-wide toggles.
+                </div>
+            </div>
+        </a>
+
+        <a asp-controller="Tools" asp-action="SystemInfo" class="tool-card">
+            <div class="tool-icon">
+                <i class="bi bi-activity"></i>
+            </div>
+            <div class="tool-content">
+                <div class="tool-title">System Info</div>
+                <div class="tool-description">
+                    View server hardware usage, uptime, and database connectivity status.
+                </div>
+            </div>
+        </a>
+
+        <a asp-controller="Tools" asp-action="Migrations" class="tool-card">
+            <div class="tool-icon">
+                <i class="bi bi-layers-half"></i>
+            </div>
+            <div class="tool-content">
+                <div class="tool-title">Database Migrations</div>
+                <div class="tool-description">
+                    Track Entity Framework schema changes and sync status.
+                </div>
+            </div>
+        </a>
+
+        <a asp-controller="Tools" asp-action="CacheManager" class="tool-card">
+            <div class="tool-icon">
+                <i class="bi bi-database-fill-gear"></i>
+            </div>
+            <div class="tool-content">
+                <div class="tool-title">Cache Management</div>
+                <div class="tool-description">
+                    Monitor, inspect, and flush system-wide In-Memory or Distributed cache entries.
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/pages/pages.tools-hub.css" asp-append-version="true" />
+}
