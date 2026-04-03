@@ -21,15 +21,15 @@ function loadFileList() {
                         .addClass('log-file-item list-group-item list-group-item-action d-flex flex-column align-items-start')
                         .html(`
                             <div class="d-flex w-100 justify-content-between align-items-center">
-                                <span class="text-truncate fw-semibold">${item.fileName}</span>
+                                <span class="text-truncate fw-semibold">${item.FileName}</span>
                             </div>
                             <small class="text-muted" style="font-size: 0.75rem;">
-                                <i class="bi bi-clock-history me-1"></i>${item.lastModified}
+                                <i class="bi bi-clock-history me-1"></i>${item.LastModified}
                             </small>
                         `)
                         .on('click', function () {
                             // Pass the fileName property to the loader
-                            loadLogContent(item.fileName, $(this));
+                            loadLogContent(item.FileName, $(this));
                         });
 
                     $list.append($btn);
