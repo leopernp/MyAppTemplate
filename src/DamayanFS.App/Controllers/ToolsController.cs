@@ -1,7 +1,7 @@
-﻿using DamayanFS.App.ViewModels.Tools;
+using MyAppTemplate.App.ViewModels.Tools;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DamayanFS.App.Controllers;
+namespace MyAppTemplate.App.Controllers;
 
 public class ToolsController : Controller
 {

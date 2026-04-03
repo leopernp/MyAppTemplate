@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.Enums;
+namespace MyAppTemplate.Contract.Enums;
 
 public enum UserActivityAction
 {

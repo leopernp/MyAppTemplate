@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.App.ViewModels.Shared;
+namespace MyAppTemplate.App.ViewModels.Shared;
 
 public class PageHeaderViewModel
 {

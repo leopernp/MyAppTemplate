@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.DTO;
+namespace MyAppTemplate.Contract.DTO;
 
 public class RoleModulePermissionDto
 {

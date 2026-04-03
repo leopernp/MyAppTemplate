@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Data.ContextModels;
+namespace MyAppTemplate.Data.ContextModels;
 
 public class RoleModulePermission
 {

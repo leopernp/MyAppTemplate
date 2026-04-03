@@ -1,15 +1,15 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Enums;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models;
-using DamayanFS.Contract.Models.ModuleType;
-using DamayanFS.Contract.Models.Role;
-using DamayanFS.Contract.Models.User;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Enums;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models;
+using MyAppTemplate.Contract.Models.ModuleType;
+using MyAppTemplate.Contract.Models.Role;
+using MyAppTemplate.Contract.Models.User;
 using Microsoft.Extensions.Options;
 using System.Net;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class SettingsService : ISettingsService
 {

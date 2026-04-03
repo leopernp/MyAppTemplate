@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Contract.Models.User;
+namespace MyAppTemplate.Contract.Models.User;
 
 public class UserUpsertModel
 {

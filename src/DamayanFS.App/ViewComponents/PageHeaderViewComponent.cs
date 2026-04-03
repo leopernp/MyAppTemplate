@@ -1,7 +1,7 @@
-﻿using DamayanFS.App.ViewModels.Shared;
+using MyAppTemplate.App.ViewModels.Shared;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DamayanFS.App.ViewComponents;
+namespace MyAppTemplate.App.ViewComponents;
 
 public class PageHeaderViewComponent : ViewComponent
 {

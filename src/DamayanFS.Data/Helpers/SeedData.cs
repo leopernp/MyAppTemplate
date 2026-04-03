@@ -1,10 +1,10 @@
-ï»¿using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models;
-using DamayanFS.Data.Context;
-using DamayanFS.Data.ContextModels;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models;
+using MyAppTemplate.Data.Context;
+using MyAppTemplate.Data.ContextModels;
 using System.Runtime.CompilerServices;
 
-namespace DamayanFS.Data.Helpers;
+namespace MyAppTemplate.Data.Helpers;
 
 public static class SeedData
 {
@@ -13,12 +13,12 @@ public static class SeedData
         IAuthenticationService authService,
         InitialSystemSettings settings)
     {
-        // v1.0 â€” Initial seed
+        // v1.0 — Initial seed
         const string v = "v1.0";
         ApplySeed(context, $"{v}-Roles", () => CreateRoles(context));
         ApplySeed(context, $"{v}-Admin", () => CreateAdmin(context, authService, settings));
 
-        // v1.1 â€” Module system seed
+        // v1.1 — Module system seed
         const string v2 = "v1.1";
         ApplySeed(context, $"{v2}-ModuleTypes", () => CreateModuleTypes(context));
         ApplySeed(context, $"{v2}-Modules", () => CreateModules(context));
@@ -120,7 +120,7 @@ public static class SeedData
 
     #endregion
 
-    #region v1.1 â€” Module System Seed
+    #region v1.1 — Module System Seed
 
     private static void CreateModuleTypes(ApplicationDbContext context)
     {

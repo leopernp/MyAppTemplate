@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Helpers;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Data.Context;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Helpers;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Repositories.Settings;
+namespace MyAppTemplate.Data.Repositories.Settings;
 
 public class ModuleTypeRepository : BaseRepository<ContextModels.ModuleType>, IModuleTypeRepository
 {
@@ -86,7 +86,7 @@ public class ModuleTypeRepository : BaseRepository<ContextModels.ModuleType>, IM
         if (hasAction && !hasController)
             result.AddError("Controller is required when Action is provided.");
 
-        // Delete guard — check for active child modules
+        // Delete guard � check for active child modules
         if (dto.Id > 0)
         {
             bool hasModules = await _context.Modules

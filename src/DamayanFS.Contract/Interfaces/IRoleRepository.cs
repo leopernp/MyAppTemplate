@@ -1,7 +1,7 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Helpers;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Helpers;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface IRoleRepository
 {

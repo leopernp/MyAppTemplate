@@ -3,10 +3,11 @@
     "allow": [
       "Bash(xargs grep:*)",
       "Bash(grep -E \"\\\\.cs$\")",
-      "Bash(grep -l \"class.*Dto\" /d/Files/Development/WebApp/DamayanFS/src/DamayanFS.Contract/DTO/*.cs)"
+      "Bash(grep -l \"class.*Dto\" /d/Files/Development/WebApp/MyAppTemplate/src/MyAppTemplate.Contract/DTO/*.cs)",
+      "Bash(powershell -Command ':*)"
     ],
     "additionalDirectories": [
-      "C:\\Users\\Leo Pern\\.claude\\projects\\D--Files-Development-WebApp-DamayanFS\\memory"
+      "C:\\Users\\Leo Pern\\.claude\\projects\\D--Files-Development-WebApp-MyAppTemplate\\memory"
     ]
   }
 }

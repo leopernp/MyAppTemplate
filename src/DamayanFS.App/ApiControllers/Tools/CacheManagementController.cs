@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace DamayanFS.App.ApiControllers.Tools
+namespace MyAppTemplate.App.ApiControllers.Tools
 {
     [Route("api/[controller]")]
     [ApiController]

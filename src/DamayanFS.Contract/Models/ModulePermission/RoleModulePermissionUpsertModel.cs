@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Contract.Models.ModulePermission;
+namespace MyAppTemplate.Contract.Models.ModulePermission;
 
 public class RoleModulePermissionUpsertModel
 {

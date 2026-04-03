@@ -1,6 +1,6 @@
-using DamayanFS.Contract.Models.Role;
+using MyAppTemplate.Contract.Models.Role;
 
-namespace DamayanFS.App.ViewModels.Role;
+namespace MyAppTemplate.App.ViewModels.Role;
 
 public class RoleIndexViewModel : BaseViewModel
 {

@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.DTO;
+namespace MyAppTemplate.Contract.DTO;
 
 public class ModuleTypeDto
 {
@@ -47,6 +47,6 @@ public class ModuleTypeDto
     // Computed
     public bool HasLink => !string.IsNullOrEmpty(Controller) && !string.IsNullOrEmpty(Action);
 
-    // Child modules — populated when building the menu tree
+    // Child modules � populated when building the menu tree
     public IEnumerable<ModuleDto> Modules { get; set; } = new List<ModuleDto>();
 }

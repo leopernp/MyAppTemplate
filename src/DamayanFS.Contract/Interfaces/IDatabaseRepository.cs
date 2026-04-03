@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface IDatabaseRepository
 {

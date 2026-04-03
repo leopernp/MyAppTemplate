@@ -1,9 +1,9 @@
-﻿@using DamayanFS.App.ViewModels.Shared
+@using MyAppTemplate.App.ViewModels.Shared
 @model PageHeaderViewModel
 
 <div class="page-header mb-3">
 
-    @* ── Breadcrumb row ── *@
+    @* -- Breadcrumb row -- *@
     @if (Model?.BreadcrumbItems?.Count > 0)
     {
         <nav class="page-header-bc" aria-label="breadcrumb">
@@ -37,7 +37,7 @@
         </nav>
     }
 
-    @* ── Title + actions row ── *@
+    @* -- Title + actions row -- *@
     <div class="page-header-row">
 
         @* Identity: icon box + title + subtitle *@
@@ -57,7 +57,7 @@
             </div>
         </div>
 
-        @* Actions — rendered from ActionButtons; legacy shorthand as fallback *@
+        @* Actions � rendered from ActionButtons; legacy shorthand as fallback *@
         @{
             var buttons = Model?.ActionButtons ?? new List<PageHeaderViewModel.PageHeaderActionButton>();
             bool hasLegacy = buttons.Count == 0 && !string.IsNullOrEmpty(Model?.ActionButtonText);

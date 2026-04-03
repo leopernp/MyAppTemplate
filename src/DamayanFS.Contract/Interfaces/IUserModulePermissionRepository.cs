@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.DTO;
+using MyAppTemplate.Contract.DTO;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface IUserModulePermissionRepository
 {

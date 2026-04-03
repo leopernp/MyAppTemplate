@@ -1,8 +1,8 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Data.ContextModels;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Data.ContextModels;
 
-namespace DamayanFS.Data.Mapping;
+namespace MyAppTemplate.Data.Mapping;
 
 public class UserMappingProfile : Profile
 {

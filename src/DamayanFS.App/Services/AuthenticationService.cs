@@ -1,9 +1,9 @@
-ï»¿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Enums;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models.Auth;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Enums;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models.Auth;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class AuthenticationService : IAuthenticationService
 {
@@ -34,7 +34,7 @@ public class AuthenticationService : IAuthenticationService
         {
             var user = await _userRepository.GetByUsernameForAuthAsync(username);
 
-            // Unknown username â€” generic invalid credentials, no lockout tracking
+            // Unknown username — generic invalid credentials, no lockout tracking
             if (user == null)
             {
                 await _userActivityLogService.LogAsync(
@@ -60,12 +60,12 @@ public class AuthenticationService : IAuthenticationService
                 return LoginResult.Inactive();
             }
 
-            // Check lockout â€” if still within lockout window
+            // Check lockout — if still within lockout window
             if (user.IsLockedOut)
             {
                 await _userActivityLogService.LogAsync(
                     UserActivityAction.Login,
-                    $"Login attempt blocked â€” user {user.Username} is locked out until {user.LockoutEnd:u}",
+                    $"Login attempt blocked — user {user.Username} is locked out until {user.LockoutEnd:u}",
                     null,
                     ipAddress,
                     browser);
@@ -109,7 +109,7 @@ public class AuthenticationService : IAuthenticationService
                 return LoginResult.InvalidCredentials();
             }
 
-            // Successful login â€” reset lockout state
+            // Successful login — reset lockout state
             await _userRepository.UnlockAsync(user.Id);
 
             // Reload user after unlock to get clean state

@@ -1,4 +1,4 @@
-# DamayanFS
+# MyAppTemplate
 
 A modern ASP.NET Core 9.0 web application for file system and administrative management with role-based access control, user authentication, and real-time system monitoring.
 
@@ -37,9 +37,9 @@ A modern ASP.NET Core 9.0 web application for file system and administrative man
 ## Project Structure
 
 ```
-DamayanFS/
+MyAppTemplate/
 ├── src/
-│   ├── DamayanFS.App/          # Presentation layer (MVC, API, Services)
+│   ├── MyAppTemplate.App/          # Presentation layer (MVC, API, Services)
 │   │   ├── Controllers/        # MVC controllers
 │   │   ├── ApiControllers/     # REST API endpoints
 │   │   ├── Services/           # Business logic
@@ -47,17 +47,17 @@ DamayanFS/
 │   │   ├── ViewModels/         # View-specific models
 │   │   ├── Hubs/               # SignalR hubs
 │   │   └── wwwroot/            # Static assets
-│   ├── DamayanFS.Data/         # Data access layer
+│   ├── MyAppTemplate.Data/         # Data access layer
 │   │   ├── ContextModels/      # EF Core entities
 │   │   ├── Repositories/       # Data repositories
 │   │   ├── Migrations/         # EF Core migrations
 │   │   └── Helpers/            # Seed data and utilities
-│   └── DamayanFS.Contract/     # Abstraction layer
+│   └── MyAppTemplate.Contract/     # Abstraction layer
 │       ├── Interfaces/         # Service and repository contracts
 │       ├── DTO/                # Data transfer objects
 │       ├── Models/             # Request/response models
 │       └── Enums/              # Shared enumerations
-└── DamayanFS.slnx              # Solution file
+└── MyAppTemplate.slnx              # Solution file
 ```
 
 ## Getting Started
@@ -73,29 +73,29 @@ DamayanFS/
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd DamayanFS
+   cd MyAppTemplate
    ```
 
 2. **Configure the database connection**
-   - Open `src/DamayanFS.App/appsettings.Development.json`
+   - Open `src/MyAppTemplate.App/appsettings.Development.json`
    - Update the `DefaultConnection` with your SQL Server instance
    
    ```json
    {
      "ConnectionStrings": {
-       "DefaultConnection": "Server=YOUR_SERVER;Database=dbDamayanFSDEV01;Trusted_Connection=true;"
+       "DefaultConnection": "Server=YOUR_SERVER;Database=dbMyAppTemplateDEV01;Trusted_Connection=true;"
      }
    }
    ```
 
 3. **Create and seed the database**
    ```bash
-   dotnet ef database update --project src/DamayanFS.Data --startup-project src/DamayanFS.App
+   dotnet ef database update --project src/MyAppTemplate.Data --startup-project src/MyAppTemplate.App
    ```
 
 4. **Run the application**
    ```bash
-   cd src/DamayanFS.App
+   cd src/MyAppTemplate.App
    dotnet run
    ```
 
@@ -123,16 +123,16 @@ All settings are in `appsettings.json` and `appsettings.Development.json`:
 The solution follows a three-tier architecture:
 
 ```
-DamayanFS.App (Presentation)
+MyAppTemplate.App (Presentation)
     ↓ references
-DamayanFS.Contract (Abstractions/DTOs)
+MyAppTemplate.Contract (Abstractions/DTOs)
     ↓ references
-DamayanFS.Data (Data Access)
+MyAppTemplate.Data (Data Access)
 ```
 
-- **Presentation Layer** (`DamayanFS.App`) — Controllers, views, and service injection
-- **Contract Layer** (`DamayanFS.Contract`) — Interfaces, DTOs, enums, and shared models
-- **Data Layer** (`DamayanFS.Data`) — Repositories, EF Core entities, and migrations
+- **Presentation Layer** (`MyAppTemplate.App`) — Controllers, views, and service injection
+- **Contract Layer** (`MyAppTemplate.Contract`) — Interfaces, DTOs, enums, and shared models
+- **Data Layer** (`MyAppTemplate.Data`) — Repositories, EF Core entities, and migrations
 
 ### Key Patterns
 
@@ -174,12 +174,12 @@ DamayanFS.Data (Data Access)
 
 ### Adding a New Feature
 
-1. **Create the entity** in `DamayanFS.Data/ContextModels/`
-2. **Add repository** in `DamayanFS.Data/Repositories/` (inherits `BaseRepository<T>`)
-3. **Add DTO** in `DamayanFS.Contract/DTO/`
-4. **Add service interface** in `DamayanFS.Contract/Interfaces/`
-5. **Implement service** in `DamayanFS.App/Services/`
-6. **Add controller** in `DamayanFS.App/Controllers/` or `ApiControllers/`
+1. **Create the entity** in `MyAppTemplate.Data/ContextModels/`
+2. **Add repository** in `MyAppTemplate.Data/Repositories/` (inherits `BaseRepository<T>`)
+3. **Add DTO** in `MyAppTemplate.Contract/DTO/`
+4. **Add service interface** in `MyAppTemplate.Contract/Interfaces/`
+5. **Implement service** in `MyAppTemplate.App/Services/`
+6. **Add controller** in `MyAppTemplate.App/Controllers/` or `ApiControllers/`
 7. **Register service** in `ServiceRegistration.cs`
 8. **Create migration** — Run `dotnet ef migrations add YourMigrationName`
 9. **Add tests** (if applicable)
@@ -189,8 +189,8 @@ DamayanFS.Data (Data Access)
 Always create named migrations:
 
 ```bash
-dotnet ef migrations add AddUserTable --project src/DamayanFS.Data --startup-project src/DamayanFS.App
-dotnet ef database update --project src/DamayanFS.Data --startup-project src/DamayanFS.App
+dotnet ef migrations add AddUserTable --project src/MyAppTemplate.Data --startup-project src/MyAppTemplate.App
+dotnet ef database update --project src/MyAppTemplate.Data --startup-project src/MyAppTemplate.App
 ```
 
 **Never edit existing migration files.** Create a new migration to fix issues.
@@ -198,7 +198,7 @@ dotnet ef database update --project src/DamayanFS.Data --startup-project src/Dam
 ### Running Tests
 
 ```bash
-dotnet test DamayanFS.sln
+dotnet test MyAppTemplate.sln
 ```
 
 ## API Endpoints
@@ -223,9 +223,9 @@ Logs are written to `logs/` directory with daily rotation:
 
 ```
 logs/
-├── DamayanFS-20260403.log
-├── DamayanFS-20260402.log
-└── DamayanFS-20260401.log
+├── MyAppTemplate-20260403.log
+├── MyAppTemplate-20260402.log
+└── MyAppTemplate-20260401.log
 ```
 
 Configure retention and file size limits in `appsettings.json`:
@@ -238,7 +238,7 @@ Configure retention and file size limits in `appsettings.json`:
       {
         "Name": "File",
         "Args": {
-          "path": "logs/DamayanFS-.log",
+          "path": "logs/MyAppTemplate-.log",
           "rollingInterval": "Day",
           "retainedFileCountLimit": 7,
           "fileSizeLimitBytes": 52428800
@@ -267,9 +267,9 @@ Configure retention and file size limits in `appsettings.json`:
 
 - Clear `bin/` and `obj/` folders
   ```bash
-  dotnet clean DamayanFS.sln
-  dotnet restore DamayanFS.sln
-  dotnet build DamayanFS.sln
+  dotnet clean MyAppTemplate.sln
+  dotnet restore MyAppTemplate.sln
+  dotnet build MyAppTemplate.sln
   ```
 - Check Serilog configuration and log file permissions
 - Review the application logs for error details

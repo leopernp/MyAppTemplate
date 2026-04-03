@@ -1,4 +1,4 @@
-namespace DamayanFS.Contract.Models.ModulePermission;
+namespace MyAppTemplate.Contract.Models.ModulePermission;
 
 public record ModulePermissions(bool CanView, bool CanCreate, bool CanUpdate, bool CanDelete)
 {

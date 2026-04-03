@@ -1,6 +1,6 @@
-ï»¿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.App.ViewModels.Account;
+namespace MyAppTemplate.App.ViewModels.Account;
 
 public class LoginViewModel
 {
@@ -19,13 +19,13 @@ public class LoginViewModel
 
     public string? ReturnUrl { get; set; }
 
-    // Lockout display â€” populated by controller on failed login
+    // Lockout display — populated by controller on failed login
     public bool IsLockedOut { get; set; }
     public int RemainingLockoutSeconds { get; set; }
 
-    // Error message â€” populated by controller on failed login
+    // Error message — populated by controller on failed login
     public string? ErrorMessage { get; set; }
 
-    // Computed â€” used by view to show lockout countdown vs generic error
+    // Computed — used by view to show lockout countdown vs generic error
     public bool HasError => !string.IsNullOrEmpty(ErrorMessage) || IsLockedOut;
 }

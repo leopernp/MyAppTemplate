@@ -1,8 +1,8 @@
-﻿using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DamayanFS.App.ApiControllers.Tools
+namespace MyAppTemplate.App.ApiControllers.Tools
 {
     [Route("api/[controller]")]
     [ApiController]

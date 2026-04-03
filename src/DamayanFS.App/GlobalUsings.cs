@@ -1,1 +1,1 @@
-﻿global using DamayanFS.App.ViewModels.Shared;
+global using MyAppTemplate.App.ViewModels.Shared;

@@ -1,7 +1,7 @@
-﻿using DamayanFS.Data.ContextModels;
+using MyAppTemplate.Data.ContextModels;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Context;
+namespace MyAppTemplate.Data.Context;
 
 public class ApplicationDbContext : DbContext
 {

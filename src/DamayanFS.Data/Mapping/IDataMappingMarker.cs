@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Data.Mapping;
+namespace MyAppTemplate.Data.Mapping;
 
 /// <summary>
 /// Marker interface used for AutoMapper assembly scanning in the Data project.

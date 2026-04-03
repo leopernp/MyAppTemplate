@@ -1,12 +1,12 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Models.Module;
-using DamayanFS.Contract.Models.ModulePermission;
-using DamayanFS.Contract.Models.ModuleType;
-using DamayanFS.Contract.Models.Role;
-using DamayanFS.Contract.Models.User;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Models.Module;
+using MyAppTemplate.Contract.Models.ModulePermission;
+using MyAppTemplate.Contract.Models.ModuleType;
+using MyAppTemplate.Contract.Models.Role;
+using MyAppTemplate.Contract.Models.User;
 
-namespace DamayanFS.App.Mapping;
+namespace MyAppTemplate.App.Mapping;
 
 public class WebMappingProfile : Profile
 {

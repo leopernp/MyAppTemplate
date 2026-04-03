@@ -1,7 +1,7 @@
-﻿using DamayanFS.Contract.Enums;
+using MyAppTemplate.Contract.Enums;
 using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Data.ContextModels;
+namespace MyAppTemplate.Data.ContextModels;
 
 public class UserActivityLog
 {

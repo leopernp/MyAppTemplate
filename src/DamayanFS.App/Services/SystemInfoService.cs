@@ -1,10 +1,10 @@
-﻿using DamayanFS.Contract.DTO.Tools;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.DTO.Tools;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.Data.SqlClient;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class SystemInfoService : ISystemInfoService
 {

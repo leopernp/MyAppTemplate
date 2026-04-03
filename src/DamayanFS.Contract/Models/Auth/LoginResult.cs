@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.DTO;
+using MyAppTemplate.Contract.DTO;
 
-namespace DamayanFS.Contract.Models.Auth;
+namespace MyAppTemplate.Contract.Models.Auth;
 
 public class LoginResult
 {
@@ -23,7 +23,7 @@ public class LoginResult
                 ? "Invalid username or password."
                 : string.Empty;
 
-    // Static factory methods — clean construction, no public setters
+    // Static factory methods � clean construction, no public setters
     public static LoginResult Success(UserDto user) => new()
     {
         IsSuccess = true,

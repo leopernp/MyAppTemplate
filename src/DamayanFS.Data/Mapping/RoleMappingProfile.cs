@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
 
-namespace DamayanFS.Data.Mapping;
+namespace MyAppTemplate.Data.Mapping;
 
 public class RoleMappingProfile : Profile
 {

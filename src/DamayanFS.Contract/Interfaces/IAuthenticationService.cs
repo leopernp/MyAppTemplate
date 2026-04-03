@@ -1,7 +1,7 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Models.Auth;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Models.Auth;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface IAuthenticationService
 {

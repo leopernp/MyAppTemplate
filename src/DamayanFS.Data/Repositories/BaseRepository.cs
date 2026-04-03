@@ -1,7 +1,7 @@
-﻿using AutoMapper;
-using DamayanFS.Data.Context;
+using AutoMapper;
+using MyAppTemplate.Data.Context;
 
-namespace DamayanFS.Data.Repositories;
+namespace MyAppTemplate.Data.Repositories;
 
 public class BaseRepository<TEntity> where TEntity : class
 {

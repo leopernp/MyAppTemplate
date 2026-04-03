@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 
-namespace DamayanFS.App.ApiControllers.Tools;
+namespace MyAppTemplate.App.ApiControllers.Tools;
 
 [Route("api/[controller]")]
 [ApiController]

@@ -1,14 +1,14 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Data.ContextModels;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Data.ContextModels;
 
-namespace DamayanFS.Data.Mapping;
+namespace MyAppTemplate.Data.Mapping;
 
 public class ModuleMappingProfile : Profile
 {
     public ModuleMappingProfile()
     {
-        // ModuleType → ModuleTypeDto
+        // ModuleType ? ModuleTypeDto
         CreateMap<ModuleType, ModuleTypeDto>()
             .ForMember(dest => dest.CreatedByUsername, opt => opt.MapFrom(src => src.CreatedBy.Username))
             .ForMember(dest => dest.CreatedByFirstName, opt => opt.MapFrom(src => src.CreatedBy.FirstName))
@@ -23,7 +23,7 @@ public class ModuleMappingProfile : Profile
             .ForMember(dest => dest.ModifiedBy, opt => opt.Ignore())
             .ForMember(dest => dest.Modules, opt => opt.Ignore());
 
-        // Module → ModuleDto
+        // Module ? ModuleDto
         CreateMap<Module, ModuleDto>()
             .ForMember(dest => dest.ModuleTypeName, opt => opt.MapFrom(src => src.ModuleType.Name))
             .ForMember(dest => dest.ParentModuleName, opt => opt.MapFrom(src => src.ParentModule.Name))
@@ -48,7 +48,7 @@ public class ModuleMappingProfile : Profile
             .ForMember(dest => dest.RolePermissions, opt => opt.Ignore())
             .ForMember(dest => dest.UserPermissions, opt => opt.Ignore());
 
-        // RoleModulePermission → RoleModulePermissionDto
+        // RoleModulePermission ? RoleModulePermissionDto
         CreateMap<RoleModulePermission, RoleModulePermissionDto>()
             .ForMember(dest => dest.RoleName, opt => opt.MapFrom(src => src.Role.Name))
             .ForMember(dest => dest.ModuleName, opt => opt.MapFrom(src => src.Module.Name))
@@ -61,7 +61,7 @@ public class ModuleMappingProfile : Profile
             .ForMember(dest => dest.Module, opt => opt.Ignore())
             .ForMember(dest => dest.CreatedBy, opt => opt.Ignore());
 
-        // UserModulePermission → UserModulePermissionDto
+        // UserModulePermission ? UserModulePermissionDto
         CreateMap<UserModulePermission, UserModulePermissionDto>()
             .ForMember(dest => dest.Username, opt => opt.MapFrom(src => src.User.Username))
             .ForMember(dest => dest.UserFirstName, opt => opt.MapFrom(src => src.User.FirstName))

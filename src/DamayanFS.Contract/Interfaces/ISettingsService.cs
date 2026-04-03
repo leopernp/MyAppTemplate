@@ -1,9 +1,9 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Models.ModuleType;
-using DamayanFS.Contract.Models.Role;
-using DamayanFS.Contract.Models.User;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Models.ModuleType;
+using MyAppTemplate.Contract.Models.Role;
+using MyAppTemplate.Contract.Models.User;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface ISettingsService
 {

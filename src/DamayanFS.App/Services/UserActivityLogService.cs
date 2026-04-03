@@ -1,8 +1,8 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Enums;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Enums;
+using MyAppTemplate.Contract.Interfaces;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class UserActivityLogService : IUserActivityLogService
 {

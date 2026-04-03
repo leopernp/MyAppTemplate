@@ -1,8 +1,8 @@
-ï»¿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class MenuCacheService : IMenuCacheService
 {
@@ -79,7 +79,7 @@ public class MenuCacheService : IMenuCacheService
                 module.IsAccessible = ResolveAccessibility(module, moduleLookup, moduleTypeLookup);
             }
 
-            // Filter to only modules the user can view â€” maintenance modules are kept and shown with a badge in the sidebar
+            // Filter to only modules the user can view — maintenance modules are kept and shown with a badge in the sidebar
             var permittedModules = allModules
                 .Where(x => x.CanView)
                 .ToList();
@@ -101,7 +101,7 @@ public class MenuCacheService : IMenuCacheService
                     .ToList();
             }
 
-            // Filter ModuleTypes â€” keep direct links and section headers with visible children
+            // Filter ModuleTypes — keep direct links and section headers with visible children
             var filteredTree = moduleTypes
                 .Where(x => x.HasLink || x.Modules.Any())
                 .OrderBy(x => x.DisplayOrder)

@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Helpers;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Data.Context;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Helpers;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Repositories.Settings;
+namespace MyAppTemplate.Data.Repositories.Settings;
 
 public class ModuleRepository : BaseRepository<ContextModels.Module>, IModuleRepository
 {
@@ -122,7 +122,7 @@ public class ModuleRepository : BaseRepository<ContextModels.Module>, IModuleRep
             }
         }
 
-        // Delete guard — check for active child modules
+        // Delete guard � check for active child modules
         if (dto.Id > 0)
         {
             bool hasChildren = await _context.Modules

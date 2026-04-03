@@ -1,5 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
-namespace DamayanFS.Data.ContextModels;
+using System.ComponentModel.DataAnnotations;
+namespace MyAppTemplate.Data.ContextModels;
 
 public class User
 {

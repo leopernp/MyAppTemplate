@@ -1,6 +1,6 @@
-﻿using System.Text.Json.Serialization;
+using System.Text.Json.Serialization;
 
-namespace DamayanFS.Contract.DTO.Tools;
+namespace MyAppTemplate.Contract.DTO.Tools;
 
 public class SystemStatusDto
 {

@@ -1,17 +1,17 @@
-﻿using DamayanFS.App.Mapping;
-using DamayanFS.App.Services;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models;
-using DamayanFS.Data.Context;
-using DamayanFS.Data.Mapping;
-using DamayanFS.Data.Repositories;
+using MyAppTemplate.App.Mapping;
+using MyAppTemplate.App.Services;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models;
+using MyAppTemplate.Data.Context;
+using MyAppTemplate.Data.Mapping;
+using MyAppTemplate.Data.Repositories;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
-namespace DamayanFS.App.Configuration;
+namespace MyAppTemplate.App.Configuration;
 
 public static class ServiceRegistration
 {
@@ -43,7 +43,7 @@ public static class ServiceRegistration
 
     public static IServiceCollection AddDataServices(this IServiceCollection services)
     {
-        // Repositories — auto-discovered via reflection
+        // Repositories � auto-discovered via reflection
         RegisterBaseRepositories(services);
         services.AddScoped<IDatabaseRepository, Data.Repositories.Tools.DatabaseRepository>();
 
@@ -123,7 +123,7 @@ public static class ServiceRegistration
         foreach (var repositoryType in repositoryTypes)
         {
             var contractInterfaces = repositoryType.GetInterfaces()
-                .Where(@interface => @interface.Namespace == "DamayanFS.Contract.Interfaces"
+                .Where(@interface => @interface.Namespace == "MyAppTemplate.Contract.Interfaces"
                     && @interface.Name.EndsWith("Repository", StringComparison.Ordinal));
 
             foreach (var contractInterface in contractInterfaces)

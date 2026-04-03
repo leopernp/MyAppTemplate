@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Data.ContextModels;
+namespace MyAppTemplate.Data.ContextModels;
 
 public class Role
 {

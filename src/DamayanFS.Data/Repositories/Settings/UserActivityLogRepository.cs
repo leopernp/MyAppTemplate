@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Enums;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Data.Context;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Enums;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Repositories.Settings
+namespace MyAppTemplate.Data.Repositories.Settings
 {
     public class UserActivityLogRepository : BaseRepository<ContextModels.UserActivityLog>, IUserActivityLogRepository
     {

@@ -1,12 +1,12 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Helpers;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Data.Context;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Helpers;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Data.Context;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Repositories.Settings;
+namespace MyAppTemplate.Data.Repositories.Settings;
 
 public class RoleRepository : BaseRepository<ContextModels.Role>, IRoleRepository
 {

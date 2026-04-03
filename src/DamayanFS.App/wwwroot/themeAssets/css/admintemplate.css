@@ -1,14 +1,14 @@
-﻿/* ═══════════════════════════════════════════════════════════
-           DamayanFS Admin — Indigo & Slate theme
+/* -----------------------------------------------------------
+           MyAppTemplate Admin � Indigo & Slate theme
            Strategy:
-             • Override Bootstrap's own CSS variables on [data-bs-theme]
+             � Override Bootstrap's own CSS variables on [data-bs-theme]
                so every Bootstrap component (btn, card, form, modal,
-               dropdown, table, badge…) adapts automatically.
-             • Only add custom classes for structural elements that
-               Bootstrap has no equivalent for (sidebar, topbar, avatar…).
-             • Custom class names are plain & descriptive — no prefix.
-           ═══════════════════════════════════════════════════════════ */
-/* ── Indigo palette (static, both themes) ── */
+               dropdown, table, badge�) adapts automatically.
+             � Only add custom classes for structural elements that
+               Bootstrap has no equivalent for (sidebar, topbar, avatar�).
+             � Custom class names are plain & descriptive � no prefix.
+           ----------------------------------------------------------- */
+/* -- Indigo palette (static, both themes) -- */
 :root {
     --indigo-50: #eef2ff;
     --indigo-100: #e0e7ff;
@@ -21,7 +21,7 @@
     --topbar-height: 56px;
 }
 
-/* ── Light theme: override Bootstrap tokens ── */
+/* -- Light theme: override Bootstrap tokens -- */
 [data-bs-theme="light"] {
     /* Bootstrap core overrides */
     --bs-body-font-family: 'DM Sans', system-ui, sans-serif;
@@ -62,7 +62,7 @@
     --bs-badge-border-radius: 10px;
     --bs-badge-padding-x: 0.6rem;
     --bs-badge-padding-y: 0.2rem;
-    /* Button — primary maps to indigo */
+    /* Button � primary maps to indigo */
     --bs-btn-color: #fff;
     /* Custom layout tokens */
     --surface: #ffffff;
@@ -80,7 +80,7 @@
     --scrollbar: #cbd5e1;
 }
 
-/* ── Dark theme: override Bootstrap tokens ── */
+/* -- Dark theme: override Bootstrap tokens -- */
 [data-bs-theme="dark"] {
     --bs-body-font-family: 'DM Sans', system-ui, sans-serif;
     --bs-body-font-size: 0.9rem;
@@ -127,7 +127,7 @@
     --scrollbar: #2d3f55;
 }
 
-/* ─── Bootstrap component overrides ───────────────────────── */
+/* --- Bootstrap component overrides ------------------------- */
 
 /* body */
 body {
@@ -135,7 +135,7 @@ body {
     line-height: 1.6;
 }
 
-/* btn-primary → indigo */
+/* btn-primary ? indigo */
 .btn-primary {
     --bs-btn-bg: var(--indigo-600);
     --bs-btn-border-color: var(--indigo-600);
@@ -148,7 +148,7 @@ body {
     font-weight: 500;
 }
 
-/* btn-outline-secondary → themed border + text */
+/* btn-outline-secondary ? themed border + text */
 .btn-outline-secondary {
     --bs-btn-color: var(--bs-secondary-color);
     --bs-btn-border-color: var(--bs-border-color);
@@ -198,7 +198,7 @@ body {
         vertical-align: middle;
     }
 
-/* DataTables dark-mode rows — Bootstrap's --bs-table-hover-bg drives hover */
+/* DataTables dark-mode rows � Bootstrap's --bs-table-hover-bg drives hover */
 [data-bs-theme="dark"] table.dataTable tbody tr:hover > * {
     background-color: var(--bs-table-hover-bg) !important;
     color: var(--bs-body-color) !important;
@@ -388,7 +388,7 @@ body {
             border-radius: 0 3px 3px 0;
         }
 
-/* badge — status variants use Bootstrap's subtle utilities */
+/* badge � status variants use Bootstrap's subtle utilities */
 .badge {
     font-size: .7rem;
     font-weight: 500;
@@ -399,8 +399,8 @@ body {
     gap: .3rem;
 }
 
-/* ─── Custom structural elements ──────────────────────────── */
-/* (No component equivalent in Bootstrap — plain descriptive names) */
+/* --- Custom structural elements ---------------------------- */
+/* (No component equivalent in Bootstrap � plain descriptive names) */
 
 .app-shell {
     display: flex;
@@ -537,7 +537,7 @@ body {
         color: var(--indigo-600);
     }
 
-/* icon button — small square button used in topbar */
+/* icon button � small square button used in topbar */
 .icon-btn {
     width: 34px;
     height: 34px;
@@ -590,7 +590,7 @@ body {
         color: var(--indigo-600);
         transform: rotate(12deg);
     }
-    /* Icon visibility owned by JS — .is-light/.is-dark on the button itself */
+    /* Icon visibility owned by JS � .is-light/.is-dark on the button itself */
     .theme-btn .theme-icon-sun,
     .theme-btn .theme-icon-moon {
         display: none;
@@ -638,7 +638,7 @@ body {
         margin-left: 0;
     }
 
-/* ── Page header — Variant A ── */
+/* -- Page header � Variant A -- */
 .page-header {
     width: 100%;
     padding-bottom: .875rem;
@@ -704,7 +704,7 @@ body {
     flex-shrink: 0;
 }
 
-/* stat card — metric summary (not a full Bootstrap card) */
+/* stat card � metric summary (not a full Bootstrap card) */
 .stat-card {
     background: var(--surface);
     border: 1px solid var(--bs-border-color);
@@ -915,7 +915,7 @@ body {
     transform: rotate(-90deg);
 }
 
-/* ── Collapsible section header (ModuleType with children) ── */
+/* -- Collapsible section header (ModuleType with children) -- */
 .nav-section-toggle {
     display: flex;
     align-items: center;
@@ -962,9 +962,9 @@ body {
         transform: rotate(-90deg);
     }
 
-/* ── Nested module group link (Module with children) ── */
+/* -- Nested module group link (Module with children) -- */
 .nav-link-group {
-    /* Inherits .nav-link layout — just add chevron behavior */
+    /* Inherits .nav-link layout � just add chevron behavior */
     font-weight: 500;
 }
 
@@ -976,7 +976,7 @@ body {
         transform: rotate(-90deg);
     }
 
-/* ── Sub-nav indent for nested modules ── */
+/* -- Sub-nav indent for nested modules -- */
 .nav-sub {
     padding-left: 1rem;
     border-left: 1px solid var(--bs-border-color);
@@ -993,7 +993,7 @@ body {
         margin-left: 1rem;
     }
 
-/* ── User profile dropdown ── */
+/* -- User profile dropdown -- */
 .user-dropdown-menu {
     min-width: 210px;
     padding: .375rem;

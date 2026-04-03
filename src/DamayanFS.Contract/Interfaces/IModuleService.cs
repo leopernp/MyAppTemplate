@@ -1,9 +1,9 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Models.Module;
-using DamayanFS.Contract.Models.ModulePermission;
-using DamayanFS.Contract.Models.ModuleType;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Models.Module;
+using MyAppTemplate.Contract.Models.ModulePermission;
+using MyAppTemplate.Contract.Models.ModuleType;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface IModuleService
 {

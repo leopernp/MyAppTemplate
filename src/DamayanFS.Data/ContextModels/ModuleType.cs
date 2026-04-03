@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 using System.Reflection;
 
-namespace DamayanFS.Data.ContextModels;
+namespace MyAppTemplate.Data.ContextModels;
 
 public class ModuleType
 {

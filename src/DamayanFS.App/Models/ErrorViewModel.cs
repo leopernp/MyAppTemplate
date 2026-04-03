@@ -1,4 +1,4 @@
-namespace DamayanFS.App.Models
+namespace MyAppTemplate.App.Models
 {
     public class ErrorViewModel
     {

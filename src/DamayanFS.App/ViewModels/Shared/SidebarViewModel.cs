@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.DTO;
+using MyAppTemplate.Contract.DTO;
 
-namespace DamayanFS.App.ViewModels.Shared;
+namespace MyAppTemplate.App.ViewModels.Shared;
 
 public class SidebarViewModel
 {

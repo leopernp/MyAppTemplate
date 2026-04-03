@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.SignalR;
+using Microsoft.AspNetCore.SignalR;
 
-namespace DamayanFS.App.Hubs;
+namespace MyAppTemplate.App.Hubs;
 
 public class SystemHub : Hub
 {

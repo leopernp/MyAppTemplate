@@ -1,4 +1,4 @@
-ï»¿namespace DamayanFS.Contract.DTO;
+namespace MyAppTemplate.Contract.DTO;
 
 public class ModuleDto
 {
@@ -52,15 +52,15 @@ public class ModuleDto
     public bool HasLink => !string.IsNullOrEmpty(Controller) && !string.IsNullOrEmpty(Action);
     public bool IsGroupNode => !HasLink;
 
-    // Tree structure â€” populated when building the menu tree
+    // Tree structure — populated when building the menu tree
     public IEnumerable<ModuleDto> ChildModules { get; set; } = new List<ModuleDto>();
 
-    // Effective permissions â€” populated during permission resolution
+    // Effective permissions — populated during permission resolution
     public bool CanView { get; set; }
     public bool CanCreate { get; set; }
     public bool CanUpdate { get; set; }
     public bool CanDelete { get; set; }
 
-    // Accessibility â€” resolved at runtime
+    // Accessibility — resolved at runtime
     public bool IsAccessible { get; set; } = true;
 }

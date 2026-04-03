@@ -1,11 +1,11 @@
-﻿using AutoMapper;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models.Module;
-using DamayanFS.Contract.Models.ModulePermission;
-using DamayanFS.Contract.Models.ModuleType;
+using AutoMapper;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models.Module;
+using MyAppTemplate.Contract.Models.ModulePermission;
+using MyAppTemplate.Contract.Models.ModuleType;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class ModuleService : IModuleService
 {
@@ -328,7 +328,7 @@ public class ModuleService : IModuleService
 
                 foreach (var module in modules)
                 {
-                    // Resolve effective permissions — OR role and user grants
+                    // Resolve effective permissions � OR role and user grants
                     rolePermissions.TryGetValue(module.Id, out var rolePerm);
                     userPermissions.TryGetValue(module.Id, out var userPerm);
 

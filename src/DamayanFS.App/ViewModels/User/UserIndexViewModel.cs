@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.Models.User;
+using MyAppTemplate.Contract.Models.User;
 
-namespace DamayanFS.App.ViewModels.User;
+namespace MyAppTemplate.App.ViewModels.User;
 
 public class UserIndexViewModel : BaseViewModel
 {

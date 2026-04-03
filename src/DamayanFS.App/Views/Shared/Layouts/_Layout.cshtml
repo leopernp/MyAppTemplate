@@ -1,11 +1,11 @@
-﻿@using System.Security.Claims
+@using System.Security.Claims
 
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] — Finance System</title>
+    <title>@ViewData["Title"] � Finance System</title>
 
     <script src="~/themeAssets/js/admintemplate.js" asp-append-version="true"></script>
 
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="~/themeAssets/css/admintemplate.tomselect.css" asp-append-version="true" />
 
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/DamayanFS.App.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/MyAppTemplate.App.styles.css" asp-append-version="true" />
     <!-- Template CSS -->
     <link rel="stylesheet" href="~/themeAssets/css/admintemplate.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/themeAssets/css/admintemplate.sweetalert.css" asp-append-version="true" />
@@ -46,7 +46,7 @@
         @await Html.PartialAsync("Layouts/_Topbar")
 
 
-        <!-- ══════════ MAIN ══════════ -->
+        <!-- ---------- MAIN ---------- -->
         <main class="main-content" id="mainContent" role="main">
 
             @if (TempData["SuccessMessage"] is string successMsg)

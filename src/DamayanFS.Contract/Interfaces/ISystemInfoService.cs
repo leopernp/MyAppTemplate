@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.DTO.Tools;
+using MyAppTemplate.Contract.DTO.Tools;
 
-namespace DamayanFS.Contract.Interfaces;
+namespace MyAppTemplate.Contract.Interfaces;
 
 public interface ISystemInfoService
 {

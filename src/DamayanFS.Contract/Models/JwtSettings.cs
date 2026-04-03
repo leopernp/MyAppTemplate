@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.Models;
+namespace MyAppTemplate.Contract.Models;
 
 public class JwtSettings
 {

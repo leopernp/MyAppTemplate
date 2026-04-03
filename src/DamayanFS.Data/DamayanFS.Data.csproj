@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DamayanFS.Contract\DamayanFS.Contract.csproj" />
+    <ProjectReference Include="..\MyAppTemplate.Contract\MyAppTemplate.Contract.csproj" />
   </ItemGroup>
 
 </Project>

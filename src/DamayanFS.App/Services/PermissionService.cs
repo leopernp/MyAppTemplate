@@ -1,7 +1,7 @@
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models.ModulePermission;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models.ModulePermission;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class PermissionService : IPermissionService
 {

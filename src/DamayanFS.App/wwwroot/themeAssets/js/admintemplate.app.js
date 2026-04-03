@@ -1,5 +1,5 @@
-﻿/* =============================================================
-   DamayanFS Admin — admin.js
+/* =============================================================
+   MyAppTemplate Admin � admin.js
    Handles: active nav, theme toggle, sidebar collapse,
             alert auto-dismiss, DataTables global defaults.
    Depends on: Bootstrap 5, jQuery, DataTables (loaded before
@@ -14,11 +14,11 @@
     const SIDEBAR_KEY = 'sidebar_collapsed';
     const themeBtn = document.getElementById('themeToggle');
 
-    // ── 1. Theme ──────────────────────────────────────────────
+    // -- 1. Theme ----------------------------------------------
     //
     // Two separate responsibilities kept explicit:
-    //   applyTheme(t)  — writes the attribute + updates the button icon
-    //   setTheme(t)    — persists to localStorage then calls applyTheme
+    //   applyTheme(t)  � writes the attribute + updates the button icon
+    //   setTheme(t)    � persists to localStorage then calls applyTheme
     //
     // The icon state is driven by a CSS class on the button itself
     // (.is-light / .is-dark), NOT by a [data-bs-theme] attribute selector.
@@ -47,7 +47,7 @@
 
     // Apply saved (or OS-preferred) theme immediately on script load.
     // The anti-flash inline script in <head> already set data-bs-theme
-    // on the HTML element before paint — this call syncs the button icon
+    // on the HTML element before paint � this call syncs the button icon
     // to match that already-applied theme.
     (function initTheme() {
         var saved = localStorage.getItem(THEME_KEY)
@@ -60,7 +60,7 @@
         setTheme(next);
     });
 
-    // ── 2. Active nav link ────────────────────────────────────
+    // -- 2. Active nav link ------------------------------------
     //
     // Longest-prefix match: /admin/users/edit/5 highlights the
     // Users link (/admin/users) without needing an exact match.
@@ -89,7 +89,7 @@
         }
     }());
 
-    // ── 3. Sidebar collapse ───────────────────────────────────
+    // -- 3. Sidebar collapse -----------------------------------
 
     var sidebar = document.getElementById('sidebar');
     var topbar = document.getElementById('topbar');
@@ -123,7 +123,7 @@
         });
     }
 
-    // ── 4. Auto-dismiss alerts ────────────────────────────────
+    // -- 4. Auto-dismiss alerts --------------------------------
 
     document.querySelectorAll('.alert-dismissible').forEach(function (el) {
         setTimeout(function () {
@@ -132,7 +132,7 @@
         }, 5000);
     });
 
-    // ── 5. DataTables global defaults ────────────────────────
+    // -- 5. DataTables global defaults ------------------------
     // Set once here. Individual pages override only what they need.
 
     $(function () {
@@ -162,7 +162,7 @@
                     extend: 'excel',
                     text: '<i class="bi bi-file-earmark-spreadsheet me-1"></i>Excel',
                     className: 'btn btn-sm',
-                    title: 'DamayanFS Export'
+                    title: 'MyAppTemplate Export'
                 },
                 {
                     extend: 'csv',

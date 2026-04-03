@@ -1,8 +1,8 @@
-﻿using DamayanFS.App.Hubs;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.App.Hubs;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.AspNetCore.SignalR;
 
-namespace DamayanFS.App.Services.BackgroundServices;
+namespace MyAppTemplate.App.Services.BackgroundServices;
 
 public class SystemMonitoringService : BackgroundService
 {

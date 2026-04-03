@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.Contract.Helpers;
+namespace MyAppTemplate.Contract.Helpers;
 
 public class CustomValidateResult
 {

@@ -1,6 +1,6 @@
-﻿using DamayanFS.Contract.Enums;
+using MyAppTemplate.Contract.Enums;
 
-namespace DamayanFS.Contract.DTO;
+namespace MyAppTemplate.Contract.DTO;
 
 public class UserActivityLogDto
 {

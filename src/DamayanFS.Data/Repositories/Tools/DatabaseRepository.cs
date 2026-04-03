@@ -1,10 +1,10 @@
-﻿using DamayanFS.Contract.Interfaces;
-using DamayanFS.Data.Context;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace DamayanFS.Data.Repositories.Tools;
+namespace MyAppTemplate.Data.Repositories.Tools;
 
 public class DatabaseRepository : IDatabaseRepository
 {

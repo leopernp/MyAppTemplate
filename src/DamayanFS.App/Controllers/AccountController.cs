@@ -1,13 +1,13 @@
-﻿using DamayanFS.App.ViewModels.Account;
+using MyAppTemplate.App.ViewModels.Account;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-using IAuthService = DamayanFS.Contract.Interfaces.IAuthenticationService;
+using IAuthService = MyAppTemplate.Contract.Interfaces.IAuthenticationService;
 
-namespace DamayanFS.App.Controllers;
+namespace MyAppTemplate.App.Controllers;
 
 public class AccountController : Controller
 {
@@ -28,7 +28,7 @@ public class AccountController : Controller
     [AllowAnonymous]
     public IActionResult Login(string? returnUrl = null)
     {
-        // Already authenticated — redirect to home
+        // Already authenticated � redirect to home
         if (User.Identity?.IsAuthenticated == true)
             return RedirectToAction("Index", "Home");
 

@@ -1,10 +1,10 @@
-using DamayanFS.App.Configuration;
-using DamayanFS.App.Hubs;
-using DamayanFS.App.Services.BackgroundServices;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models;
-using DamayanFS.Data.Context;
-using DamayanFS.Data.Helpers;
+using MyAppTemplate.App.Configuration;
+using MyAppTemplate.App.Hubs;
+using MyAppTemplate.App.Services.BackgroundServices;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models;
+using MyAppTemplate.Data.Context;
+using MyAppTemplate.Data.Helpers;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 using Serilog;
@@ -19,7 +19,7 @@ Log.Logger = new LoggerConfiguration()
     .MinimumLevel.Information()
     .WriteTo.Console()
     .WriteTo.File(
-        $"Logs/damayanfs-{processId}-.txt",
+        $"Logs/myapptemplate-{processId}-.txt",
         rollingInterval: RollingInterval.Day, // Creates a new file every day
         retainedFileCountLimit: 7, // Keeps only the last 7 days of logs
         rollOnFileSizeLimit: true, // Rolls when file gets too big (default 1GB)

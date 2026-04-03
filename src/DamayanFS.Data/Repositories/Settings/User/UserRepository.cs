@@ -1,11 +1,11 @@
-﻿using AutoMapper;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Helpers;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Helpers;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
-namespace DamayanFS.Data.Repositories.Settings.User;
+namespace MyAppTemplate.Data.Repositories.Settings.User;
 
 public class UserRepository : BaseRepository<ContextModels.User>, IUserRepository
 {
@@ -89,7 +89,7 @@ public class UserRepository : BaseRepository<ContextModels.User>, IUserRepositor
 
         if (entity == null) return null;
 
-        // Manual mapping — bypasses AutoMapper Password ignore
+        // Manual mapping � bypasses AutoMapper Password ignore
         return new UserDto
         {
             Id = entity.Id,

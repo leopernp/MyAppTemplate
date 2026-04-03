@@ -1,9 +1,9 @@
-﻿using System;
+using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace DamayanFS.Data.Migrations
+namespace MyAppTemplate.Data.Migrations
 {
     /// <inheritdoc />
     public partial class AddCascadeDeleteOnUserActivityLog : Migration

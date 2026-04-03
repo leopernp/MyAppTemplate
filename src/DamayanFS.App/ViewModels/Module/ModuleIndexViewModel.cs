@@ -1,6 +1,6 @@
-using DamayanFS.Contract.Models.Module;
+using MyAppTemplate.Contract.Models.Module;
 
-namespace DamayanFS.App.ViewModels.Module;
+namespace MyAppTemplate.App.ViewModels.Module;
 
 public class ModuleIndexViewModel : BaseViewModel
 {

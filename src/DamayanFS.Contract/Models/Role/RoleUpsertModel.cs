@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Contract.Models.Role;
+namespace MyAppTemplate.Contract.Models.Role;
 
 public class RoleUpsertModel
 {

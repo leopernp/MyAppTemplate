@@ -1,12 +1,12 @@
-using DamayanFS.App.ViewModels.Permission;
-using DamayanFS.App.ViewModels.Shared;
-using DamayanFS.Contract.Interfaces;
-using DamayanFS.Contract.Models.ModulePermission;
+using MyAppTemplate.App.ViewModels.Permission;
+using MyAppTemplate.App.ViewModels.Shared;
+using MyAppTemplate.Contract.Interfaces;
+using MyAppTemplate.Contract.Models.ModulePermission;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace DamayanFS.App.Controllers;
+namespace MyAppTemplate.App.Controllers;
 
 [Authorize]
 [AutoValidateAntiforgeryToken]

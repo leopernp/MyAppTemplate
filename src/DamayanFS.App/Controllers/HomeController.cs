@@ -1,10 +1,10 @@
 using System.Diagnostics;
-using DamayanFS.App.Models;
-using DamayanFS.App.ViewModels;
+using MyAppTemplate.App.Models;
+using MyAppTemplate.App.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DamayanFS.App.Controllers;
+namespace MyAppTemplate.App.Controllers;
 
 [Authorize]
 public class HomeController : Controller

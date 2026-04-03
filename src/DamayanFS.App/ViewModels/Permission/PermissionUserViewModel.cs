@@ -1,4 +1,4 @@
-namespace DamayanFS.App.ViewModels.Permission;
+namespace MyAppTemplate.App.ViewModels.Permission;
 
 public class PermissionUserViewModel : BaseViewModel
 {

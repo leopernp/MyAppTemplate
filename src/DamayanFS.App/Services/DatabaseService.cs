@@ -1,7 +1,7 @@
-﻿using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Interfaces;
 
-namespace DamayanFS.App.Services;
+namespace MyAppTemplate.App.Services;
 
 public class DatabaseService : IDatabaseService
 {

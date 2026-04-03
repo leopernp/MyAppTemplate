@@ -1,4 +1,4 @@
-﻿namespace DamayanFS.App.ViewModels;
+namespace MyAppTemplate.App.ViewModels;
 
 public class DashboardViewModel : BaseViewModel
 {

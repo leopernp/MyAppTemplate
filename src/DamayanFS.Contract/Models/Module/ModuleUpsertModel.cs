@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations;
 
-namespace DamayanFS.Contract.Models.Module;
+namespace MyAppTemplate.Contract.Models.Module;
 
 public class ModuleUpsertModel
 {

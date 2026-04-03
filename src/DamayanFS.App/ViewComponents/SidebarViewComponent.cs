@@ -1,10 +1,10 @@
-﻿using DamayanFS.App.ViewModels.Shared;
-using DamayanFS.Contract.DTO;
-using DamayanFS.Contract.Interfaces;
+using MyAppTemplate.App.ViewModels.Shared;
+using MyAppTemplate.Contract.DTO;
+using MyAppTemplate.Contract.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
-namespace DamayanFS.App.ViewComponents;
+namespace MyAppTemplate.App.ViewComponents;
 
 public class SidebarViewComponent : ViewComponent
 {
@@ -78,7 +78,7 @@ public class SidebarViewComponent : ViewComponent
         foreach (var module in moduleType.Modules)
             MarkModuleActiveState(module, currentController, currentAction);
 
-        // ModuleType is active if any child is active — auto-expand
+        // ModuleType is active if any child is active � auto-expand
         moduleType.IsActive = moduleType.Modules.Any(IsActiveRecursive);
     }
 
