@@ -4,7 +4,15 @@
       "Bash(xargs grep:*)",
       "Bash(grep -E \"\\\\.cs$\")",
       "Bash(grep -l \"class.*Dto\" /d/Files/Development/WebApp/MyAppTemplate/src/MyAppTemplate.Contract/DTO/*.cs)",
-      "Bash(powershell -Command ':*)"
+      "Bash(powershell -Command ':*)",
+      "Bash(mv DamayanFS.App/* .)",
+      "Bash(mv DamayanFS.App/.* .)",
+      "Bash(rmdir DamayanFS.App)",
+      "Bash(mv DamayanFS.slnx MyAppTemplate.slnx)",
+      "Bash(mv src/MyAppTemplate.App/DamayanFS.App.csproj src/MyAppTemplate.App/MyAppTemplate.App.csproj)",
+      "Bash(mv src/MyAppTemplate.Contract/DamayanFS.Contract.csproj src/MyAppTemplate.Contract/MyAppTemplate.Contract.csproj)",
+      "Bash(mv src/MyAppTemplate.Data/DamayanFS.Data.csproj src/MyAppTemplate.Data/MyAppTemplate.Data.csproj)",
+      "Bash(mv src/MyAppTemplate.Database/DamayanFS.Database.sqlproj src/MyAppTemplate.Database/MyAppTemplate.Database.sqlproj)"
     ],
     "additionalDirectories": [
       "C:\\Users\\Leo Pern\\.claude\\projects\\D--Files-Development-WebApp-MyAppTemplate\\memory"
